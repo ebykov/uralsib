@@ -1,0 +1,568 @@
+@import 'mq'
+
+@import 'functions'
+@import 'keyframes'
+
+colors = {
+  main: #002D72,
+  extra: #FFD100,
+  correct: #43B02A,
+  incorrect: #FF6C6C,
+}
+
+.wrapper
+  display: flex
+  justify-content: center
+  align-items: center
+  min-height: 100vh
+
+.uralsib
+  position: relative
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 1060px
+  max-width: 100%
+  min-height: 600px
+  font-size: 18px
+  line-height: normal
+  text-size-adjust: 100%
+  border-radius: 0 10px 0 0
+  background-color: colors.main
+  overflow: hidden
+
+  & *
+  & *:before
+  & *:after
+    box-sizing: border-box
+
+  svg
+    display block
+    fill currentColor
+    pointer-events none
+
+  & b
+    font-weight: 700
+
+  & button
+    font-family: inherit
+    font-size: inherit
+    outline: none
+    cursor: pointer
+    appearance: none
+
+  &__bg-movie
+    position: absolute
+    z-index: 1
+    top: 0
+    left: 0
+
+  &__bg-business
+    position: absolute
+    z-index: 1
+    bottom: 0
+    right: 0
+
+  &__logo
+    position: absolute
+    top: 8px
+    right: 22px
+    z-index: 1
+    color: #ffffff
+
+  &-enter
+    width: 500px
+    max-width: 100%
+
+    &__title
+      color: #ffffff
+      font-size: 48px
+      font-weight: 700
+      line-height: 68px
+
+    &__description
+      margin-top: 17px
+      color: #ffffff
+      line-height: 1.5em
+
+    &__start-btn
+      width: 170px
+      height: 50px
+      padding: 0
+      margin-top: 42px
+      color: #ffffff
+      font-size: 18px
+      font-weight: 700
+      border: 2px solid #ffffff
+      border-radius: 5px
+      background-color: transparent
+      transition: color .2s, background-color .2s
+
+      &:hover
+        color: colors.main
+        background-color: #ffffff
+
+        @media (hover none), (hover on-demand)
+          color: #ffffff
+          background-color: transparent
+
+  &-q
+    position: relative
+    width: 400px
+    max-width: 100%
+
+    &__pages
+      position: absolute
+      top: -38px
+      left: 0
+      right: 0
+      width: 100%
+      color: #7EB1FF
+      font-weight: 700
+      text-align: center
+
+    &__card
+      position: relative
+      z-index: 2
+      min-height: 480px
+
+    &__cards
+      position: absolute
+      z-index: 1
+      top: 100%
+      left: 0
+      right: 0
+
+      & div
+        position: absolute
+        bottom: -5px
+        left: 0
+        right: 0
+        margin: 0 auto
+        width: 100%
+        height: 480px
+        border-radius: 10px
+        background-color: #ffffff
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, .25)
+
+        &:nth-child(1)
+          z-index: 3
+          width: 96%
+
+        &:nth-child(2)
+          z-index: 2
+          bottom: -10px
+          width: 92%
+
+        &:nth-child(3)
+          bottom: -15px
+          width: 88%
+
+    &__option
+      position: absolute
+      z-index: 3
+      top: 14px
+      bottom: 0
+      margin: auto 0
+      display: flex
+      justify-content: center
+      align-items: center
+      width: 90px
+      height: 90px
+      color: #ffffff
+      border: 10px solid colors.main
+      border-radius: 100%
+      background-color: colors.main
+      cursor: pointer
+      box-sizing: content-box
+      user-select: none
+      transition: transform .2s, background-color .1s
+
+      &:hover
+        color: colors.main
+        background-color: #ffffff
+
+        @media (hover none), (hover on-demand)
+          color: #ffffff
+          background-color: colors.main
+
+      &.is-hide
+        opacity: 0
+        visibility: hidden
+
+      &--left
+        right: 100%
+        transform translate3d(-3px, 0, 0)
+
+      &--right
+        left: 100%
+        transform translate3d(3px, 0, 0)
+
+      ^[0]-q.is-correct &
+      ^[0]-q.is-incorrect &
+        color: colors.main
+        background-color: #ffffff
+        cursor: default
+
+        &--left
+          transform: translate3d(14px, 0, 0)
+
+        &--right
+          transform: translate3d(-14px, 0, 0)
+
+      ^[0]-q.is-correct &
+        color: colors.correct
+
+      ^[0]-q.is-incorrect &
+        color: colors.incorrect
+
+    &__option-icon
+      position: relative
+      width: 75px
+      height: 75px
+      color: currentColor
+      border: 3px solid currentColor
+      border-radius: 100%
+
+      & svg
+        position: absolute
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+        margin: auto
+
+    &__option-caption
+      position: absolute
+      bottom: 0
+      left: 50%
+      color: currentColor
+      font-size: 14px
+      font-weight: 700
+      transform: translate3d(-50%, 14px, 0)
+      transition: transform .1s
+
+      ^[0]-q__option:hover &
+        color: #ffffff
+        transform: translate3d(-50%, 20px, 0)
+
+        @media (hover none), (hover on-demand)
+          color: currentColor
+          transform: translate3d(-50%, 14px, 0)
+
+      ^[0]-q.is-correct ^[0]-q__option:hover &
+      ^[0]-q.is-incorrect ^[0]-q__option:hover &
+        color: currentColor
+
+      ^[0]-q.is-correct &
+      ^[0]-q.is-incorrect &
+        transform: translate3d(-50%, 20px, 0)
+
+  &-card
+    min-height: 480px
+    overflow: hidden
+    border-radius: 10px
+    background-color: #ffffff
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, .25)
+
+    &__head
+      position: relative
+      height: 280px
+      overflow: hidden
+      background-color: #FFD101
+      transition: height .2s
+
+      ^[0]-q.is-correct &
+      ^[0]-q.is-incorrect &
+        height: 50px
+
+    &__img
+      position: absolute
+      top: 50%
+      transform: translate3d(0, -50%, 0)
+      display: block
+      width: 100%
+      transition: transform .2s
+
+    &__text
+      padding: 28px 20px 10px 30px
+      color: #666666
+      font-size: 16px
+      line-height: 26px
+
+    &__answer
+      transform: translate3d(0, -20px, 0)
+
+    &-answer
+      padding: 0 30px 10px 45px
+
+      &__info
+        display: flex
+        align-items: flex-start
+        margin-bottom: 20px
+
+      &__info-img
+        display: block
+        width: 120px
+        height: 120px
+        margin-right: 24px
+        border-radius: 100%
+
+      &__info-bio
+        margin-top: 50px
+        color: #999999
+
+        & p
+          padding: 0
+          margin: 0 !important
+
+          &:not(:last-child)
+            margin-bottom: 8px !important
+
+      &__title
+        font-size: 24px
+        font-weight: 700
+
+        ^[0]-q.is-correct &
+          color: colors.correct
+
+        ^[0]-q.is-incorrect &
+          color: colors.incorrect
+
+      &__text
+        margin-top: 18px
+        padding-right: 15px
+        color: #666666
+        font-size: 16px
+        line-height: 26px
+
+      &__next-btn
+        position: relative
+        width: 170px
+        height: 50px
+        padding: 0 20px 0 0
+        margin-top: 44px
+        color: #666666
+        font-weight: 700
+        border: 2px solid #cccccc
+        border-radius: 5px
+        background-color: transparent
+        transition: color .2s, border-color .2s, background-color .2s
+
+        & svg
+          position: absolute
+          top: 0
+          bottom: 0
+          right: 20px
+          margin: auto 0
+
+        &:hover
+          color: #fff
+          border-color: #666666
+          background-color: #666666
+
+          @media (hover none), (hover on-demand)
+            color: #666666
+            border-color: #cccccc
+            background-color: transparent
+
+  &-result
+    position: relative
+    width: 500px
+    max-width: 100%
+    margin: 20px 0 0 20px
+
+    &__img
+      position: absolute
+      bottom: 64px
+      right: -15px
+
+    &__text
+      position: relative
+      z-index: 2
+      margin-bottom: 14px
+      color: #fff
+      line-height: 1.722em
+
+    &__btn
+      position: relative
+      z-index: 2
+      width: 200px
+      height: 50px
+      padding: 0
+      margin: 0 !important
+      color: colors.main
+      font-weight: 700
+      border: 0
+      border-radius: 5px
+      background-color: colors.extra
+      transition: opacity .2s
+
+      &:hover
+        opacity: .6
+
+        @media (hover none), (hover on-demand)
+          opacity: 1
+
+    &__title
+      position: relative
+      z-index: 2
+      margin-top: 46px
+      color: #ffffff
+      font-size: 24px
+      font-weight: 700
+      line-height: 1.417em
+
+    &__subtitle
+      position: relative
+      z-index: 2
+      margin-top: 10px
+      margin-bottom: 18px
+      color: #ffffff
+      line-height: 1.444em
+
+    &__share
+      position: relative
+      z-index: 2
+      min-height: 44px
+
+  &-offer
+    position: relative
+    width: 500px
+    max-width: 100%
+    margin-top: 22px
+
+    &__icon
+      color: colors.extra
+
+    &__text
+      margin-top: 6px
+      color: #ffffff
+      line-height: 32px
+
+      & a
+        color: colors.extra
+        border-bottom: 1px solid colors.extra
+        transition: opacity .2s
+
+        &:hover
+          opacity: .6
+
+          @media (hover none), (hover on-demand)
+            opacity: 1
+
+    &__block
+      width: calc(100% + 30px)
+      margin: 20px 0 50px -20px
+      padding: 15px 20px 20px
+      border-radius: 5px
+      background-color: colors.extra
+
+    &__block-icon
+      color: colors.main
+
+    &__block-text
+      margin: 10px 0 14px
+      color: colors.main
+      line-height: 32px
+
+    &__block-btn
+      display: block
+      width: 200px
+      height: 50px
+      color: colors.main
+      font-weight: 700
+      line-height: 50px
+      text-align: center
+      border-radius: 5px
+      background: #FFFFFF
+      box-shadow: 0px 5px 5px rgba(0, 0, 0, .2)
+      transition: box-shadow .2s
+
+      &:hover
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, .1)
+
+    &__back-btn
+      position: relative
+      padding-left: 28px
+      color: #ffffff
+      cursor: pointer
+      user-select: none
+      opacity: .5
+      transition: opacity .2s
+
+      & svg
+        position: absolute
+        top: 50%
+        left: 4px
+        transform: translate3d(0, -50%, 0) scale(-1)
+
+      &:hover
+        opacity: 1
+
+    &__img
+      position: absolute
+      bottom: -35px
+      right: -30px
+
+
+  .likely
+    &--custom
+      display: flex
+
+    &__widget
+      flex-shrink: 0
+      display: flex
+      align-items: center
+      justify-content: center
+      min-width: 58px
+      height: 44px
+      color: #BFCBDC
+      border: 1px solid currentColor
+      background-color: transparent
+      cursor: pointer
+
+      &:not(:last-child)
+        margin-right: 5px
+
+      &:hover
+        color: colors.main
+        border-color: #BFCBDC
+        background-color: #BFCBDC
+
+      @media $mq.iphone6
+        &:not(:last-child)
+          margin-right: 10px
+
+      @media $mq.not_mobile
+        &--facebook
+          padding: 0 20px 0 8px
+
+    &__counter
+      display: none
+
+    &__icon
+      background-color: transparent
+
+      & svg
+        display: block
+        width: 24px
+        height: @width
+        fill: currentColor
+
+      &--vkontakte
+        & svg
+          width: 28px
+          height: @width
+
+      &--facebook
+
+        @media $mq.not_mobile
+          margin-right: 6px
+
+    &__button
+      display: none
+      line-height: 1
+
+      @media $mq.not_mobile
+        display: block
