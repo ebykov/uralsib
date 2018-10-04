@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>Uralsib</title>
+
+    <meta charset="utf-8">
+    <meta name="referrer" content="always">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Подключаем основной шрифт сайта на случай, если спецпроект будет не на отдельной странице -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700&amp;subset=cyrillic-ext">
+
+    <!-- Подключаем стили сайта на тот же случай -->
+    <!-- ВАЖНО: в стилях сайта ПОЧТИ для всех элементов свойство box-sizing определено как border-box -->
+    <link rel="stylesheet" href="https://s38736.cdn.ngenix.net/static/build/vc.ru/all.min.css?9a6ff7a9">
+</head>
+
+<body>
+
+<div class="wrapper">
+    <div id="uralsib" class="uralsib"></div>
+</div>
+
+<script>
+  (function(d, ver) {
+    var s = d.createElement('script');
+    s.src = './all.js?' + ver;
+    s.async = true;
+
+    var container = d.getElementById('uralsib');
+
+    s.onload = function() {
+      var special = new Uralsib.Special({
+        css: './all.css?' + ver,
+        container: container,
+        isFeed: document.querySelector('[air-module="module.feed"]') ? true : false,
+        share: {
+          url: 'https://vc.ru/special/uralsib/result/',
+          title: 'Идея для бизнеса или завязка фильма',
+        }
+      });
+    };
+    d.body.appendChild(s);
+  })(document, 0);
+</script>
+
+</body>
+
+</html>
