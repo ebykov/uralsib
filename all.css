@@ -610,7 +610,10 @@
   position: relative;
   max-height: 280px;
   overflow: hidden;
+  border-radius: 10px 10px 0 0;
   background-color: #ffd101;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
   -webkit-transition: max-height 0.2s;
   transition: max-height 0.2s;
 }
