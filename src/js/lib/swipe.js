@@ -6,9 +6,9 @@ export default function makeSwipeable(el, callback) {
   let direction = null;
 
   function down(eDown) {
-    eDown.preventDefault();
-
     if (el.closest('.is-correct') || el.closest('.is-incorrect')) { return false; }
+
+    eDown.preventDefault();
 
     if (eDown.touches) { eDown = eDown.touches[0]; }
 
