@@ -17,6 +17,10 @@ export default {
     correctMsg: '<p>Вы правы. Ему пришла в голову идея создать сервис облачного хранения данных — так появился Dropbox. Герой этой истории — Дрю Хьюстон — теперь долларовый миллиардер.</p>',
     incorrectMsg: '<p>Вы не правы. Герой этой истории, Дрю Хьюстон, придумал сервис Dropbox, чтобы хранить нужные файлы в облаке.</p>',
     correct: 'right',
+    info: {
+      avatar: 'https://leonardo.osnova.io/27086adc-1f57-f07f-66e2-f7cd76bf6559/',
+      bio: '<p><b>Дрю Хьюстон</b></p><p>Основатель Dropbox</p>',
+    },
   }, {
     img: 'https://leonardo.osnova.io/0673ba59-d386-19b7-2c58-85bc8892f871/',
     img2x: 'https://leonardo.osnova.io/94ea4aa4-36f4-78ba-3cbe-82d6ed6321af/',
@@ -24,6 +28,10 @@ export default {
     correctMsg: '<p>Правильно. К бизнесу это не имеет отношения, но создателям кинокомедии «Фантомас», из которой взят этот сюжет, удалось хорошо заработать на кассовых сборах в СССР.</p>',
     incorrectMsg: '<p>Неверно. Это завязка кинокомедии «Фантомас».</p>',
     correct: 'left',
+    info: {
+      avatar: 'https://leonardo.osnova.io/e004f241-75c7-156f-919a-f4d93b784a4e/',
+      bio: '<p><b>Фантомас</b></p><p>Фильм</p>',
+    },
   }, {
     img: 'https://leonardo.osnova.io/c0b25d02-489b-67b3-572d-37f88aa6704f/',
     img2x: 'https://leonardo.osnova.io/70501ec9-3945-7541-4f5a-abcb500b4301/',
@@ -31,6 +39,10 @@ export default {
     correctMsg: '<p>Да! После продажи своей гигантской коллекции Джо Маддалена открыл аукцион памятных вещей Profiles In History. Бластер со съёмок «Звёздных войн» там продали за $240 тысяч.</p>',
     incorrectMsg: '<p>Неверно. Это мог быть фильм про страсть коллекционирования, но стало идеей для организации аукциона памятных вещей Profiles In History.</p>',
     correct: 'right',
+    info: {
+      avatar: 'https://leonardo.osnova.io/2e28bf46-e866-54be-9cde-cccd3d0149e9/',
+      bio: '<p><b>Джо Маддалена</b></p><p>Коллекционер</p>',
+    },
   }, {
     img: 'https://leonardo.osnova.io/eb494497-cef7-16b9-3d76-7961f500005c/',
     img2x: 'https://leonardo.osnova.io/6ba515f2-bf81-f682-f5f1-06b949f99bac/',
@@ -38,6 +50,10 @@ export default {
     correctMsg: '<p>Да. Это бизнес, но без попкорна. Из небольшого мешка, разогретого в микроволновке, получилась тёплая спа-подушка Wuvit, которую позже запатентовали.</p>',
     incorrectMsg: '<p>Неверно. Попкорн — классический атрибут кинематографа, но это реальная история создания спа-подушек, которые можно разогревать в микроволновке.</p>',
     correct: 'right',
+    info: {
+      avatar: 'https://leonardo.osnova.io/b6c7bd98-3202-80a7-f22d-72136332cacc/',
+      bio: '<p><b>Ким Левин</b></p><p>Создатель Wuvit</p>',
+    },
   }, {
     img: 'https://leonardo.osnova.io/4d07e16f-5a97-7bdd-323d-97ab6c9f7f3b/',
     img2x: 'https://leonardo.osnova.io/6ecba224-40b7-ec63-0f83-de5090d3fdfd/',
@@ -45,6 +61,10 @@ export default {
     correctMsg: '<p>Вы правы. У главного героя фильма «Бойцовский клуб» была настолько невзрачная жизнь, что он тратил время на тщательный подбор сервиза в каталоге.</p>',
     incorrectMsg: '<p>Вы неправы. Это всего лишь метафора серой жизни главного героя фильма «Бойцовский клуб».</p>',
     correct: 'left',
+    info: {
+      avatar: 'https://leonardo.osnova.io/38696e2e-a3ef-b364-ca39-9638755c8da9/',
+      bio: '<p><b>Бойцовский клуб</b></p><p>Фильм</p>',
+    },
   }, {
     img: 'https://leonardo.osnova.io/c2a97e67-e625-412b-c759-1a2f082a9963/',
     img2x: 'https://leonardo.osnova.io/7d0172e8-bb7f-3391-fc66-b51f47ecbb15/',
@@ -52,6 +72,10 @@ export default {
     correctMsg: '<p>Верно. Столь редкие игрушки стали коллекционными. На вторичном рынке цена на мишек Beanie Babies доходила до $5 тысяч, при себестоимости в $10.</p>',
     incorrectMsg: '<p>Нет. Звучит странно, но предприниматель Тай Уорнер продавал в каждый магазин не более 36 игрушек в месяц, из-за чего те стали коллекционными и сделали его компанию известной.</p>',
     correct: 'right',
+    info: {
+      avatar: 'https://leonardo.osnova.io/b45f64af-569b-c596-f1c8-a53d6cca07b0/',
+      bio: '<p><b>Тай Уорнер</b></p><p>Beanie Babies</p>',
+    },
   }, {
     img: 'https://leonardo.osnova.io/9449862f-51b4-34a0-f02d-011eeddaa2dc/',
     img2x: 'https://leonardo.osnova.io/fcd95e61-3e36-80cd-fb4b-1e795ae5d5be/',
@@ -59,6 +83,10 @@ export default {
     correctMsg: '<p>Правильно. «Ковёр задавал стиль всей комнате!» — знаменитая реплика героя фильма «Большой Лебовски». В походе за новым ковром начинаются все его приключения.</p>',
     incorrectMsg: '<p>Неверно. Бандиты вломились к главному герою фильма «Большой Лебовски» и испортили ему любимый ковёр. Это стало началом всех его приключений.</p>',
     correct: 'left',
+    info: {
+      avatar: 'https://leonardo.osnova.io/74d549b9-0fb3-e2d4-61d6-0826bda2a1e1/',
+      bio: '<p><b>Большой Лебовски</b></p><p>Фильм</p>',
+    },
   }, {
     img: 'https://leonardo.osnova.io/948d1a2a-5f5e-c396-57e2-c4f8d04db9a8/',
     img2x: 'https://leonardo.osnova.io/f791cefa-75ce-e2ab-138c-3c97652e795a/',
@@ -66,6 +94,10 @@ export default {
     correctMsg: '<p>Точно. Снимать экшн-видео было сложно — хорошую съёмку могли позволить себе только профессионалы. Так родилась идея сделать камеру GoPro.</p>',
     incorrectMsg: '<p>Это не так. По словам основателя компании Ника Вудмана, без сёрфинга ему никогда бы не пришла идея сделать GoPro — камеру для экстремальных съёмок.</p>',
     correct: 'right',
+    info: {
+      avatar: 'https://leonardo.osnova.io/13fe5be2-bf9b-0912-b0d5-d5969a9c89b4/',
+      bio: '<p><b>Ник Вудман</b></p><p>Основатель GoPro</p>',
+    },
   }, {
     img: 'https://leonardo.osnova.io/52c30d3b-1d39-89b7-6d5a-2f4283312bcc/',
     img2x: 'https://leonardo.osnova.io/e75eb129-4fa2-38dc-7019-ee5688542a15/',
@@ -73,6 +105,10 @@ export default {
     correctMsg: '<p>Всё верно. Цветок в горшке — атрибут главного героя из фильма «Леон». Это метафора «кочевого» образа жизни героя.</p>',
     incorrectMsg: '<p>Увы. За цветком ухаживал главный герой фильма «Леон». Это единственное живое существо, о котором он заботился.</p>',
     correct: 'left',
+    info: {
+      avatar: 'https://leonardo.osnova.io/d1dfffd0-735c-1795-5d13-18592ff98322/',
+      bio: '<p><b>Леон</b></p>Фильм<p></p>',
+    },
   }, {
     img: 'https://leonardo.osnova.io/2149a5ee-1517-3346-92f8-3daa11757c7b/',
     img2x: 'https://leonardo.osnova.io/0ac20ddf-a293-cef3-9a9e-b5d07b7005f6/',
@@ -80,6 +116,10 @@ export default {
     correctMsg: '<p>Правильно. Они подселили незнакомцев и продали им три места на надувных матрасах. Это первый заработок проекта Airbnb.</p>',
     incorrectMsg: '<p>Вы не правы. Так началась десятилетняя история компании Airbnb.</p>',
     correct: 'right',
+    info: {
+      avatar: 'https://leonardo.osnova.io/09f33026-be80-3938-88b3-72bfe34605e2/',
+      bio: '<p><b>Трое друзей</b></p><p>Основатели Airbnb</p>',
+    },
   }],
   results: [{
     range: [0, 2],

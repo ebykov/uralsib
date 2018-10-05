@@ -6,6 +6,7 @@ import Svg from './svg';
 import { makeElement, removeChildren } from './lib/dom';
 import * as Share from './lib/share';
 import { animate } from './lib/animate';
+import makeSwipeable from './lib/swipe';
 // import * as Analytics from './lib/analytics';
 // import { shuffle } from './lib/array';
 
@@ -119,6 +120,10 @@ class Special extends BaseSpecial {
     EL.q.appendChild(EL.qCards);
     EL.q.appendChild(EL.qCard);
 
+    makeSwipeable(EL.card, (t) => {
+      this.answer(t);
+    });
+
     EL.result = makeElement('div', `${CSS.main}-result`);
     EL.rText = makeElement('div', `${CSS.main}-result__text`);
     EL.rBtn = makeElement('button', `${CSS.main}-result__btn`, {
@@ -207,8 +212,6 @@ class Special extends BaseSpecial {
   }
 
   start() {
-    console.log('start');
-
     this.container.removeChild(EL.enter);
     this.container.appendChild(EL.q);
 
@@ -288,6 +291,9 @@ class Special extends BaseSpecial {
       EL.cAnswerNextBtn.innerHTML = `<span>Результат</span>${Svg.arrow}`;
       EL.cAnswerNextBtn.dataset.click = 'result';
     }
+
+    EL.cAnswerInfoImg.src = question.info.avatar;
+    EL.cAnswerInfoBio.innerHTML = question.info.bio;
 
     removeChildren(EL.cBottom);
     animate(EL.cBottom, 'fadeIn', '200ms').then(() => {

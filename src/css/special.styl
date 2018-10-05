@@ -20,16 +20,25 @@ colors = {
   position: relative
   display: flex
   justify-content: center
-  align-items: center
+  align-items: flex-start
   width: 1060px
   max-width: 100%
-  min-height: 600px
-  font-size: 18px
+  min-height: 568px
+  padding: 45px 10px 0
+  font-size: 16px
   line-height: normal
   text-size-adjust: 100%
   border-radius: 0 10px 0 0
   background-color: colors.main
   overflow: hidden
+
+  @media $mq.iphone6
+    min-height: 600px
+
+  @media $mq.not_mobile
+    align-items: center
+    padding: 0 10px
+    font-size: 18px
 
   & *
   & *:before
@@ -56,36 +65,65 @@ colors = {
     z-index: 1
     top: 0
     left: 0
+    width: 36%
+    max-width: 231px
 
   &__bg-business
     position: absolute
     z-index: 1
     bottom: 0
     right: 0
+    width: 52%
+    max-width: 331px
 
   &__logo
     position: absolute
-    top: 8px
-    right: 22px
-    z-index: 1
+    z-index: 2
+    top: 5px
+    right: 12px
+    width: 148px
+    height: 30px
     color: #ffffff
+
+    @media $mq.not_mobile
+      top: 8px
+      right: 22px
+      width: 197px
+      height: 40px
+
+    & svg
+      width: 100%
+      height: 100%
 
   &-enter
     width: 500px
     max-width: 100%
+    margin-top: 30px
+
+    @media $mq.not_mobile
+      margin-top: 0
 
     &__title
+      position: relative
+      z-index: 2
       color: #ffffff
-      font-size: 48px
+      font-size: 32px
       font-weight: 700
-      line-height: 68px
+      line-height: 1.417em
+
+      @media $mq.not_mobile
+        font-size: 48px
 
     &__description
+      position: relative
+      z-index: 2
       margin-top: 17px
       color: #ffffff
       line-height: 1.5em
 
     &__start-btn
+      position: relative
+      z-index: 2
       width: 170px
       height: 50px
       padding: 0
@@ -113,18 +151,25 @@ colors = {
 
     &__pages
       position: absolute
-      top: -38px
+      top: -30px
       left: 0
-      right: 0
-      width: 100%
       color: #7EB1FF
       font-weight: 700
-      text-align: center
+
+      @media $mq.not_mobile
+        top: -38px
+        left: 0
+        right: 0
+        width: 100%
+        text-align: center
 
     &__card
       position: relative
       z-index: 2
-      min-height: 480px
+      min-height: 400px
+
+      @media $mq.not_mobile
+        min-height: 480px
 
     &__cards
       position: absolute
@@ -140,10 +185,13 @@ colors = {
         right: 0
         margin: 0 auto
         width: 100%
-        height: 480px
+        height: 380px
         border-radius: 10px
         background-color: #ffffff
         box-shadow: 0px 3px 5px rgba(0, 0, 0, .25)
+
+        @media $mq.not_mobile
+          height: 480px
 
         &:nth-child(1)
           z-index: 3
@@ -161,14 +209,12 @@ colors = {
     &__option
       position: absolute
       z-index: 3
-      top: 14px
-      bottom: 0
-      margin: auto 0
+      bottom: -15px
       display: flex
       justify-content: center
       align-items: center
-      width: 90px
-      height: 90px
+      width: 70px
+      height: 70px
       color: #ffffff
       border: 10px solid colors.main
       border-radius: 100%
@@ -177,6 +223,16 @@ colors = {
       box-sizing: content-box
       user-select: none
       transition: transform .2s, background-color .1s
+
+      @media $mq.iphone6
+        bottom: -20px
+
+      @media $mq.not_mobile
+        top: 14px
+        bottom: 0
+        margin: auto 0
+        width: 90px
+        height: 90px
 
       &:hover
         color: colors.main
@@ -191,12 +247,22 @@ colors = {
         visibility: hidden
 
       &--left
-        right: 100%
-        transform translate3d(-3px, 0, 0)
+        left: 50%
+        transform translate3d(-100%, 100%, 0)
+
+        @media $mq.not_mobile
+          left: auto
+          right: 100%
+          transform translate3d(-3px, 0, 0)
 
       &--right
-        left: 100%
-        transform translate3d(3px, 0, 0)
+        right: 50%
+        transform translate3d(100%, 100%, 0)
+
+        @media $mq.not_mobile
+          left: 100%
+          right: auto
+          transform translate3d(3px, 0, 0)
 
       ^[0]-q.is-correct &
       ^[0]-q.is-incorrect &
@@ -205,10 +271,16 @@ colors = {
         cursor: default
 
         &--left
-          transform: translate3d(14px, 0, 0)
+          transform translate3d(-50%, calc(100% - 20px), 0)
+
+          @media $mq.not_mobile
+            transform: translate3d(14px, 0, 0)
 
         &--right
-          transform: translate3d(-14px, 0, 0)
+          transform translate3d(50%,  calc(100% - 20px), 0)
+
+          @media $mq.not_mobile
+            transform: translate3d(-14px, 0, 0)
 
       ^[0]-q.is-correct &
         color: colors.correct
@@ -218,11 +290,15 @@ colors = {
 
     &__option-icon
       position: relative
-      width: 75px
-      height: 75px
+      width: 60px
+      height: 60px
       color: currentColor
       border: 3px solid currentColor
       border-radius: 100%
+
+      @media $mq.not_mobile
+        width: 75px
+        height: 75px
 
       & svg
         position: absolute
@@ -236,9 +312,11 @@ colors = {
       position: absolute
       bottom: 0
       left: 50%
+      padding: 0 5px
       color: currentColor
       font-size: 14px
       font-weight: 700
+      background-color: colors.main
       transform: translate3d(-50%, 14px, 0)
       transition: transform .1s
 
@@ -259,22 +337,32 @@ colors = {
         transform: translate3d(-50%, 20px, 0)
 
   &-card
-    min-height: 480px
+    min-height: 400px
     overflow: hidden
     border-radius: 10px
     background-color: #ffffff
     box-shadow: 0px 3px 5px rgba(0, 0, 0, .25)
+    user-select: none
+    cursor: pointer
+
+    @media $mq.not_mobile
+      min-height: 480px
 
     &__head
       position: relative
-      height: 280px
+      max-height: 280px
       overflow: hidden
       background-color: #FFD101
-      transition: height .2s
+      transition: max-height .2s
+
+      &::before
+        content: ''
+        display: block
+        padding-top: 70%
 
       ^[0]-q.is-correct &
       ^[0]-q.is-incorrect &
-        height: 50px
+        max-height: 50px
 
     &__img
       position: absolute
@@ -283,45 +371,74 @@ colors = {
       display: block
       width: 100%
       transition: transform .2s
+      pointer-events: none
 
     &__text
-      padding: 28px 20px 10px 30px
+      padding: 20px 10px 10px
       color: #666666
       font-size: 16px
-      line-height: 26px
+      line-height: 1.4em
+
+      @media $mq.not_mobile
+        padding: 28px 20px 10px 30px
+        line-height: 1.625em
 
     &__answer
-      transform: translate3d(0, -20px, 0)
+      transform: translate3d(0, -10px, 0)
+
+      @media $mq.not_mobile
+        transform: translate3d(0, -20px, 0)
 
     &-answer
-      padding: 0 30px 10px 45px
+      padding: 0 10px 5px
+
+      @media $mq.not_mobile
+        padding: 0 30px 10px 45px
 
       &__info
         display: flex
         align-items: flex-start
-        margin-bottom: 20px
+        margin-bottom: 15px
+
+        @media $mq.not_mobile
+          margin-bottom: 20px
 
       &__info-img
         display: block
-        width: 120px
-        height: 120px
-        margin-right: 24px
+        width: 80px
+        height: 80px
+        margin-right: 14px
         border-radius: 100%
 
+        @media $mq.not_mobile
+          width: 120px
+          height: 120px
+          margin-right: 24px
+
       &__info-bio
-        margin-top: 50px
+        margin-top: 25px
         color: #999999
+
+        @media $mq.not_mobile
+          margin-top: 50px
 
         & p
           padding: 0
           margin: 0 !important
 
           &:not(:last-child)
-            margin-bottom: 8px !important
+            margin-bottom: 4px !important
+
+          @media $mq.not_mobile
+            &:not(:last-child)
+              margin-bottom: 8px !important
 
       &__title
-        font-size: 24px
+        font-size: 20px
         font-weight: 700
+
+        @media $mq.not_mobile
+          font-size: 24px
 
         ^[0]-q.is-correct &
           color: colors.correct
@@ -330,24 +447,31 @@ colors = {
           color: colors.incorrect
 
       &__text
-        margin-top: 18px
+        margin-top: 8px
         padding-right: 15px
         color: #666666
         font-size: 16px
-        line-height: 26px
+        line-height: 1.4em
+
+        @media $mq.not_mobile
+          margin-top: 18px
+          line-height: 1.625em
 
       &__next-btn
         position: relative
         width: 170px
         height: 50px
         padding: 0 20px 0 0
-        margin-top: 44px
+        margin-top: 24px
         color: #666666
         font-weight: 700
         border: 2px solid #cccccc
         border-radius: 5px
         background-color: transparent
         transition: color .2s, border-color .2s, background-color .2s
+
+        @media $mq.not_mobile
+          margin-top: 44px
 
         & svg
           position: absolute
@@ -370,7 +494,10 @@ colors = {
     position: relative
     width: 500px
     max-width: 100%
-    margin: 20px 0 0 20px
+    margin-top: 20px
+
+    @media $mq.not_mobile
+      margin: 20px 0 0 20px
 
     &__img
       position: absolute
@@ -382,7 +509,10 @@ colors = {
       z-index: 2
       margin-bottom: 14px
       color: #fff
-      line-height: 1.722em
+      line-height: 1.4em
+
+      @media $mq.not_mobile
+        line-height: 1.722em
 
     &__btn
       position: relative
@@ -412,6 +542,10 @@ colors = {
       font-size: 24px
       font-weight: 700
       line-height: 1.417em
+      text-shadow: 0 0 5px #000
+
+      @media $mq.not_mobile
+        text-shadow: none
 
     &__subtitle
       position: relative
@@ -420,6 +554,10 @@ colors = {
       margin-bottom: 18px
       color: #ffffff
       line-height: 1.444em
+      text-shadow: 0 0 5px #000
+
+      @media $mq.not_mobile
+        text-shadow: none
 
     &__share
       position: relative
@@ -438,7 +576,10 @@ colors = {
     &__text
       margin-top: 6px
       color: #ffffff
-      line-height: 32px
+      line-height: 1.4em
+
+      @media $mq.not_mobile
+        line-height: 1.778em
 
       & a
         color: colors.extra
@@ -452,11 +593,16 @@ colors = {
             opacity: 1
 
     &__block
-      width: calc(100% + 30px)
-      margin: 20px 0 50px -20px
-      padding: 15px 20px 20px
+      width: calc(100% + 10px)
+      margin: 15px 0 30px -5px
+      padding: 10px
       border-radius: 5px
       background-color: colors.extra
+
+      @media $mq.not_mobile
+        width: calc(100% + 30px)
+        margin: 20px 0 50px -20px
+        padding: 15px 20px 20px
 
     &__block-icon
       color: colors.main
@@ -464,7 +610,10 @@ colors = {
     &__block-text
       margin: 10px 0 14px
       color: colors.main
-      line-height: 32px
+      line-height: 1.4em
+
+      @media $mq.not_mobile
+        line-height: 1.778em
 
     &__block-btn
       display: block
@@ -503,7 +652,10 @@ colors = {
     &__img
       position: absolute
       bottom: -35px
-      right: -30px
+      right: -65px
+
+      @media $mq.not_mobile
+        right: -30px
 
 
   .likely
