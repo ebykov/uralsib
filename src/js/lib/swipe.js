@@ -30,7 +30,7 @@ export default function makeSwipeable(el, callback) {
       if (direction) {
         (function (dir) {
           requestAnimate({
-            duration: 200,
+            duration: 100,
             timing: timeFraction => timeFraction,
             draw: (progress) => {
               const p = 1 - progress;
