@@ -183,6 +183,33 @@ class Special extends BaseSpecial {
     EL.offer.appendChild(EL.oBlock);
     EL.offer.appendChild(EL.oBackBtn);
     EL.offer.appendChild(EL.oImg);
+
+    EL.help = makeElement('div', `${CSS.main}-help`);
+    EL.hInner = makeElement('div', `${CSS.main}-help__inner`);
+    EL.hIcon = makeElement('div', `${CSS.main}-help__icon`, {
+      innerHTML: Svg.swipe,
+    });
+    EL.hText = makeElement('div', `${CSS.main}-help__text`, {
+      innerHTML: '<p>Свайпай карточку вправо, если считаешь, что это ситуация из бизнеса.</p><p>Влево — если из фильма.</p>',
+    });
+    EL.hBtn = makeElement('button', `${CSS.main}-help__btn`, {
+      textContent: 'Понятно',
+      data: {
+        click: 'hideHelp',
+      },
+    });
+
+    EL.hInner.appendChild(EL.hIcon);
+    EL.hInner.appendChild(EL.hText);
+    EL.hInner.appendChild(EL.hBtn);
+
+    EL.help.appendChild(EL.hInner);
+  }
+
+  hideHelp() {
+    animate(EL.help, 'fadeOut', '200ms').then(() => {
+      this.container.removeChild(EL.help);
+    });
   }
 
   showCount() {
@@ -216,6 +243,11 @@ class Special extends BaseSpecial {
     this.container.appendChild(EL.q);
 
     this.makeNextQuestion();
+
+    if (/Mobi|Android/i.test(navigator.userAgent) || window.innerWidth <= 768) {
+      this.container.appendChild(EL.help);
+      animate(EL.help, 'fadeIn', '200ms', '400ms');
+    }
   }
 
   // restart() {
@@ -344,21 +376,7 @@ class Special extends BaseSpecial {
     this.container.appendChild(EL.logo);
     this.container.appendChild(EL.enter);
 
-
-    // this.container.style.display = 'block';
-    // this.setInitialParamas();
-    //
-    // this.createElements();
-    //
-    // this.storeImages(Data.questions);
-    //
-    // this.params.isFeed ? this.container.classList.add('is-feed') : '';
-    //
-    // if (this.params.startBtn) {
-    //   this.params.startBtn.addEventListener('click', () => {
-    //     this.start();
-    //   }, { once: true });
-    // }
+    this.params.isFeed ? this.container.classList.add('is-feed') : '';
   }
 }
 
