@@ -28,18 +28,6 @@
   -webkit-animation-name: fadeOutRight;
           animation-name: fadeOutRight;
 }
-.slideOutLeft {
-  -webkit-animation-name: slideOutLeft;
-          animation-name: slideOutLeft;
-}
-.slideOutRight {
-  -webkit-animation-name: slideOutRight;
-          animation-name: slideOutRight;
-}
-.rollOutRight {
-  -webkit-animation-name: rollOutRight;
-          animation-name: rollOutRight;
-}
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0;
@@ -130,8 +118,8 @@
   }
   to {
     opacity: 0;
-    -webkit-transform: translate3d(-100%, 0, 0);
-            transform: translate3d(-100%, 0, 0);
+    -webkit-transform: translate3d(-50%, 0, 0);
+            transform: translate3d(-50%, 0, 0);
   }
 }
 @keyframes fadeOutLeft {
@@ -140,8 +128,8 @@
   }
   to {
     opacity: 0;
-    -webkit-transform: translate3d(-100%, 0, 0);
-            transform: translate3d(-100%, 0, 0);
+    -webkit-transform: translate3d(-50%, 0, 0);
+            transform: translate3d(-50%, 0, 0);
   }
 }
 @-webkit-keyframes fadeOutRight {
@@ -150,8 +138,8 @@
   }
   to {
     opacity: 0;
-    -webkit-transform: translate3d(100%, 0, 0);
-            transform: translate3d(100%, 0, 0);
+    -webkit-transform: translate3d(50%, 0, 0);
+            transform: translate3d(50%, 0, 0);
   }
 }
 @keyframes fadeOutRight {
@@ -160,72 +148,8 @@
   }
   to {
     opacity: 0;
-    -webkit-transform: translate3d(100%, 0, 0);
-            transform: translate3d(100%, 0, 0);
-  }
-}
-@-webkit-keyframes slideOutLeft {
-  from {
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-  }
-  to {
-    visibility: hidden;
-    -webkit-transform: translate3d(-50%, 0, 0);
-            transform: translate3d(-50%, 0, 0);
-  }
-}
-@keyframes slideOutLeft {
-  from {
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-  }
-  to {
-    visibility: hidden;
-    -webkit-transform: translate3d(-50%, 0, 0);
-            transform: translate3d(-50%, 0, 0);
-  }
-}
-@-webkit-keyframes slideOutRight {
-  from {
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-  }
-  to {
-    visibility: hidden;
     -webkit-transform: translate3d(50%, 0, 0);
             transform: translate3d(50%, 0, 0);
-  }
-}
-@keyframes slideOutRight {
-  from {
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-  }
-  to {
-    visibility: hidden;
-    -webkit-transform: translate3d(50%, 0, 0);
-            transform: translate3d(50%, 0, 0);
-  }
-}
-@-webkit-keyframes rollOutRight {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-    -webkit-transform: translate3d(100%, 0, 0) rotate3d(0, 0, 1, 60deg);
-            transform: translate3d(100%, 0, 0) rotate3d(0, 0, 1, 60deg);
-  }
-}
-@keyframes rollOutRight {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-    -webkit-transform: translate3d(100%, 0, 0) rotate3d(0, 0, 1, 60deg);
-            transform: translate3d(100%, 0, 0) rotate3d(0, 0, 1, 60deg);
   }
 }
 .wrapper {
@@ -248,13 +172,14 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   width: 1060px;
   max-width: 100%;
-  min-height: 600px;
-  font-size: 18px;
+  min-height: 568px;
+  padding: 45px 10px 0;
+  font-size: 16px;
   line-height: normal;
   -webkit-text-size-adjust: 100%;
      -moz-text-size-adjust: 100%;
@@ -263,6 +188,20 @@
   border-radius: 0 10px 0 0;
   background-color: #002d72;
   overflow: hidden;
+}
+@media (min-width: 375px) {
+  .uralsib {
+    min-height: 600px;
+  }
+}
+@media (min-width: 680px) {
+  .uralsib {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 0 10px;
+    font-size: 18px;
+  }
 }
 .uralsib *,
 .uralsib *:before,
@@ -292,36 +231,71 @@
   z-index: 1;
   top: 0;
   left: 0;
+  width: 36%;
+  max-width: 231px;
 }
 .uralsib__bg-business {
   position: absolute;
   z-index: 1;
   bottom: 0;
   right: 0;
+  width: 52%;
+  max-width: 331px;
 }
 .uralsib__logo {
   position: absolute;
-  top: 8px;
-  right: 22px;
-  z-index: 1;
+  z-index: 2;
+  top: 5px;
+  right: 12px;
+  width: 148px;
+  height: 30px;
   color: #fff;
+}
+@media (min-width: 680px) {
+  .uralsib__logo {
+    top: 8px;
+    right: 22px;
+    width: 197px;
+    height: 40px;
+  }
+}
+.uralsib__logo svg {
+  width: 100%;
+  height: 100%;
 }
 .uralsib-enter {
   width: 500px;
   max-width: 100%;
+  margin-top: 30px;
+}
+@media (min-width: 680px) {
+  .uralsib-enter {
+    margin-top: 0;
+  }
 }
 .uralsib-enter__title {
+  position: relative;
+  z-index: 2;
   color: #fff;
-  font-size: 48px;
+  font-size: 32px;
   font-weight: 700;
-  line-height: 68px;
+  line-height: 1.417em;
+}
+@media (min-width: 680px) {
+  .uralsib-enter__title {
+    font-size: 48px;
+  }
 }
 .uralsib-enter__description {
+  position: relative;
+  z-index: 2;
   margin-top: 17px;
   color: #fff;
   line-height: 1.5em;
 }
 .uralsib-enter__start-btn {
+  position: relative;
+  z-index: 2;
   width: 170px;
   height: 50px;
   padding: 0;
@@ -352,18 +326,29 @@
 }
 .uralsib-q__pages {
   position: absolute;
-  top: -38px;
+  top: -30px;
   left: 0;
-  right: 0;
-  width: 100%;
   color: #7eb1ff;
   font-weight: 700;
-  text-align: center;
+}
+@media (min-width: 680px) {
+  .uralsib-q__pages {
+    top: -38px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+  }
 }
 .uralsib-q__card {
   position: relative;
   z-index: 2;
-  min-height: 480px;
+  min-height: 400px;
+}
+@media (min-width: 680px) {
+  .uralsib-q__card {
+    min-height: 480px;
+  }
 }
 .uralsib-q__cards {
   position: absolute;
@@ -379,11 +364,16 @@
   right: 0;
   margin: 0 auto;
   width: 100%;
-  height: 480px;
+  height: 380px;
   border-radius: 10px;
   background-color: #fff;
   -webkit-box-shadow: 0px 3px 5px rgba(0,0,0,0.25);
           box-shadow: 0px 3px 5px rgba(0,0,0,0.25);
+}
+@media (min-width: 680px) {
+  .uralsib-q__cards div {
+    height: 480px;
+  }
 }
 .uralsib-q__cards div:nth-child(1) {
   z-index: 3;
@@ -401,9 +391,7 @@
 .uralsib-q__option {
   position: absolute;
   z-index: 3;
-  top: 14px;
-  bottom: 0;
-  margin: auto 0;
+  bottom: -15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -413,8 +401,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 90px;
-  height: 90px;
+  width: 70px;
+  height: 70px;
   color: #fff;
   border: 10px solid #002d72;
   border-radius: 100%;
@@ -431,6 +419,20 @@
   transition: transform 0.2s, background-color 0.1s;
   transition: transform 0.2s, background-color 0.1s, -webkit-transform 0.2s;
 }
+@media (min-width: 375px) {
+  .uralsib-q__option {
+    bottom: -20px;
+  }
+}
+@media (min-width: 680px) {
+  .uralsib-q__option {
+    top: 14px;
+    bottom: 0;
+    margin: auto 0;
+    width: 90px;
+    height: 90px;
+  }
+}
 .uralsib-q__option:hover {
   color: #002d72;
   background-color: #fff;
@@ -446,14 +448,30 @@
   visibility: hidden;
 }
 .uralsib-q__option--left {
-  right: 100%;
-  -webkit-transform: translate3d(-3px, 0, 0);
-          transform: translate3d(-3px, 0, 0);
+  left: 50%;
+  -webkit-transform: translate3d(-100%, 100%, 0);
+          transform: translate3d(-100%, 100%, 0);
+}
+@media (min-width: 680px) {
+  .uralsib-q__option--left {
+    left: auto;
+    right: 100%;
+    -webkit-transform: translate3d(-3px, 0, 0);
+            transform: translate3d(-3px, 0, 0);
+  }
 }
 .uralsib-q__option--right {
-  left: 100%;
-  -webkit-transform: translate3d(3px, 0, 0);
-          transform: translate3d(3px, 0, 0);
+  right: 50%;
+  -webkit-transform: translate3d(100%, 100%, 0);
+          transform: translate3d(100%, 100%, 0);
+}
+@media (min-width: 680px) {
+  .uralsib-q__option--right {
+    left: 100%;
+    right: auto;
+    -webkit-transform: translate3d(3px, 0, 0);
+            transform: translate3d(3px, 0, 0);
+  }
 }
 .uralsib-q.is-correct .uralsib-q__option,
 .uralsib-q.is-incorrect .uralsib-q__option {
@@ -463,13 +481,27 @@
 }
 .uralsib-q.is-correct .uralsib-q__option--left,
 .uralsib-q.is-incorrect .uralsib-q__option--left {
-  -webkit-transform: translate3d(14px, 0, 0);
-          transform: translate3d(14px, 0, 0);
+  -webkit-transform: translate3d(-50%, calc(100% - 20px), 0);
+          transform: translate3d(-50%, calc(100% - 20px), 0);
+}
+@media (min-width: 680px) {
+  .uralsib-q.is-correct .uralsib-q__option--left,
+  .uralsib-q.is-incorrect .uralsib-q__option--left {
+    -webkit-transform: translate3d(14px, 0, 0);
+            transform: translate3d(14px, 0, 0);
+  }
 }
 .uralsib-q.is-correct .uralsib-q__option--right,
 .uralsib-q.is-incorrect .uralsib-q__option--right {
-  -webkit-transform: translate3d(-14px, 0, 0);
-          transform: translate3d(-14px, 0, 0);
+  -webkit-transform: translate3d(50%, calc(100% - 20px), 0);
+          transform: translate3d(50%, calc(100% - 20px), 0);
+}
+@media (min-width: 680px) {
+  .uralsib-q.is-correct .uralsib-q__option--right,
+  .uralsib-q.is-incorrect .uralsib-q__option--right {
+    -webkit-transform: translate3d(-14px, 0, 0);
+            transform: translate3d(-14px, 0, 0);
+  }
 }
 .uralsib-q.is-correct .uralsib-q__option {
   color: #43b02a;
@@ -479,11 +511,17 @@
 }
 .uralsib-q__option-icon {
   position: relative;
-  width: 75px;
-  height: 75px;
+  width: 60px;
+  height: 60px;
   color: currentColor;
   border: 3px solid currentColor;
   border-radius: 100%;
+}
+@media (min-width: 680px) {
+  .uralsib-q__option-icon {
+    width: 75px;
+    height: 75px;
+  }
 }
 .uralsib-q__option-icon svg {
   position: absolute;
@@ -497,9 +535,11 @@
   position: absolute;
   bottom: 0;
   left: 50%;
+  padding: 0 5px;
   color: currentColor;
   font-size: 14px;
   font-weight: 700;
+  background-color: #002d72;
   -webkit-transform: translate3d(-50%, 14px, 0);
           transform: translate3d(-50%, 14px, 0);
   -webkit-transition: -webkit-transform 0.1s;
@@ -529,24 +569,39 @@
           transform: translate3d(-50%, 20px, 0);
 }
 .uralsib-card {
-  min-height: 480px;
+  min-height: 400px;
   overflow: hidden;
   border-radius: 10px;
   background-color: #fff;
   -webkit-box-shadow: 0px 3px 5px rgba(0,0,0,0.25);
           box-shadow: 0px 3px 5px rgba(0,0,0,0.25);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+@media (min-width: 680px) {
+  .uralsib-card {
+    min-height: 480px;
+  }
 }
 .uralsib-card__head {
   position: relative;
-  height: 280px;
+  max-height: 280px;
   overflow: hidden;
   background-color: #ffd101;
-  -webkit-transition: height 0.2s;
-  transition: height 0.2s;
+  -webkit-transition: max-height 0.2s;
+  transition: max-height 0.2s;
+}
+.uralsib-card__head::before {
+  content: '';
+  display: block;
+  padding-top: 70%;
 }
 .uralsib-q.is-correct .uralsib-card__head,
 .uralsib-q.is-incorrect .uralsib-card__head {
-  height: 50px;
+  max-height: 50px;
 }
 .uralsib-card__img {
   position: absolute;
@@ -559,19 +614,37 @@
   transition: -webkit-transform 0.2s;
   transition: transform 0.2s;
   transition: transform 0.2s, -webkit-transform 0.2s;
+  pointer-events: none;
 }
 .uralsib-card__text {
-  padding: 28px 20px 10px 30px;
+  padding: 20px 10px 10px;
   color: #666;
   font-size: 16px;
-  line-height: 26px;
+  line-height: 1.4em;
+}
+@media (min-width: 680px) {
+  .uralsib-card__text {
+    padding: 28px 20px 10px 30px;
+    line-height: 1.625em;
+  }
 }
 .uralsib-card__answer {
-  -webkit-transform: translate3d(0, -20px, 0);
-          transform: translate3d(0, -20px, 0);
+  -webkit-transform: translate3d(0, -10px, 0);
+          transform: translate3d(0, -10px, 0);
+}
+@media (min-width: 680px) {
+  .uralsib-card__answer {
+    -webkit-transform: translate3d(0, -20px, 0);
+            transform: translate3d(0, -20px, 0);
+  }
 }
 .uralsib-card-answer {
-  padding: 0 30px 10px 45px;
+  padding: 0 10px 5px;
+}
+@media (min-width: 680px) {
+  .uralsib-card-answer {
+    padding: 0 30px 10px 45px;
+  }
 }
 .uralsib-card-answer__info {
   display: -webkit-box;
@@ -580,29 +653,56 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+}
+@media (min-width: 680px) {
+  .uralsib-card-answer__info {
+    margin-bottom: 20px;
+  }
 }
 .uralsib-card-answer__info-img {
   display: block;
-  width: 120px;
-  height: 120px;
-  margin-right: 24px;
+  width: 80px;
+  height: 80px;
+  margin-right: 14px;
   border-radius: 100%;
 }
+@media (min-width: 680px) {
+  .uralsib-card-answer__info-img {
+    width: 120px;
+    height: 120px;
+    margin-right: 24px;
+  }
+}
 .uralsib-card-answer__info-bio {
-  margin-top: 50px;
+  margin-top: 25px;
   color: #999;
+}
+@media (min-width: 680px) {
+  .uralsib-card-answer__info-bio {
+    margin-top: 50px;
+  }
 }
 .uralsib-card-answer__info-bio p {
   padding: 0;
   margin: 0 !important;
 }
 .uralsib-card-answer__info-bio p:not(:last-child) {
-  margin-bottom: 8px !important;
+  margin-bottom: 4px !important;
+}
+@media (min-width: 680px) {
+  .uralsib-card-answer__info-bio p:not(:last-child) {
+    margin-bottom: 8px !important;
+  }
 }
 .uralsib-card-answer__title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
+}
+@media (min-width: 680px) {
+  .uralsib-card-answer__title {
+    font-size: 24px;
+  }
 }
 .uralsib-q.is-correct .uralsib-card-answer__title {
   color: #43b02a;
@@ -611,18 +711,24 @@
   color: #ff6c6c;
 }
 .uralsib-card-answer__text {
-  margin-top: 18px;
+  margin-top: 8px;
   padding-right: 15px;
   color: #666;
   font-size: 16px;
-  line-height: 26px;
+  line-height: 1.4em;
+}
+@media (min-width: 680px) {
+  .uralsib-card-answer__text {
+    margin-top: 18px;
+    line-height: 1.625em;
+  }
 }
 .uralsib-card-answer__next-btn {
   position: relative;
   width: 170px;
   height: 50px;
   padding: 0 20px 0 0;
-  margin-top: 44px;
+  margin-top: 24px;
   color: #666;
   font-weight: 700;
   border: 2px solid #ccc;
@@ -630,6 +736,11 @@
   background-color: transparent;
   -webkit-transition: color 0.2s, border-color 0.2s, background-color 0.2s;
   transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+}
+@media (min-width: 680px) {
+  .uralsib-card-answer__next-btn {
+    margin-top: 44px;
+  }
 }
 .uralsib-card-answer__next-btn svg {
   position: absolute;
@@ -654,7 +765,12 @@
   position: relative;
   width: 500px;
   max-width: 100%;
-  margin: 20px 0 0 20px;
+  margin-top: 20px;
+}
+@media (min-width: 680px) {
+  .uralsib-result {
+    margin: 20px 0 0 20px;
+  }
 }
 .uralsib-result__img {
   position: absolute;
@@ -666,7 +782,12 @@
   z-index: 2;
   margin-bottom: 14px;
   color: #fff;
-  line-height: 1.722em;
+  line-height: 1.4em;
+}
+@media (min-width: 680px) {
+  .uralsib-result__text {
+    line-height: 1.722em;
+  }
 }
 .uralsib-result__btn {
   position: relative;
@@ -699,6 +820,12 @@
   font-size: 24px;
   font-weight: 700;
   line-height: 1.417em;
+  text-shadow: 0 0 5px #000;
+}
+@media (min-width: 680px) {
+  .uralsib-result__title {
+    text-shadow: none;
+  }
 }
 .uralsib-result__subtitle {
   position: relative;
@@ -707,6 +834,12 @@
   margin-bottom: 18px;
   color: #fff;
   line-height: 1.444em;
+  text-shadow: 0 0 5px #000;
+}
+@media (min-width: 680px) {
+  .uralsib-result__subtitle {
+    text-shadow: none;
+  }
 }
 .uralsib-result__share {
   position: relative;
@@ -725,7 +858,12 @@
 .uralsib-offer__text {
   margin-top: 6px;
   color: #fff;
-  line-height: 32px;
+  line-height: 1.4em;
+}
+@media (min-width: 680px) {
+  .uralsib-offer__text {
+    line-height: 1.778em;
+  }
 }
 .uralsib-offer__text a {
   color: #ffd100;
@@ -742,11 +880,18 @@
   }
 }
 .uralsib-offer__block {
-  width: calc(100% + 30px);
-  margin: 20px 0 50px -20px;
-  padding: 15px 20px 20px;
+  width: calc(100% + 10px);
+  margin: 15px 0 30px -5px;
+  padding: 10px;
   border-radius: 5px;
   background-color: #ffd100;
+}
+@media (min-width: 680px) {
+  .uralsib-offer__block {
+    width: calc(100% + 30px);
+    margin: 20px 0 50px -20px;
+    padding: 15px 20px 20px;
+  }
 }
 .uralsib-offer__block-icon {
   color: #002d72;
@@ -754,7 +899,12 @@
 .uralsib-offer__block-text {
   margin: 10px 0 14px;
   color: #002d72;
-  line-height: 32px;
+  line-height: 1.4em;
+}
+@media (min-width: 680px) {
+  .uralsib-offer__block-text {
+    line-height: 1.778em;
+  }
 }
 .uralsib-offer__block-btn {
   display: block;
@@ -803,7 +953,12 @@
 .uralsib-offer__img {
   position: absolute;
   bottom: -35px;
-  right: -30px;
+  right: -65px;
+}
+@media (min-width: 680px) {
+  .uralsib-offer__img {
+    right: -30px;
+  }
 }
 .uralsib .likely--custom {
   display: -webkit-box;
