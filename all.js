@@ -2569,6 +2569,8 @@ function makeSwipeable(el, callback) {
   var x = 0;
   var shift = 0;
   var direction = null;
+  var firstX = void 0;
+  var currentX = void 0;
 
   function down(eDown) {
     if (el.closest('.is-correct') || el.closest('.is-incorrect')) {
@@ -2581,6 +2583,7 @@ function makeSwipeable(el, callback) {
 
     // x = eDown.clientX + shift;
     x = eDown.clientX;
+    firstX = x;
 
     function move(eMove) {
       if (eMove.touches) {
@@ -2589,6 +2592,7 @@ function makeSwipeable(el, callback) {
 
       shift = x - eMove.clientX;
       direction = x - eMove.clientX > 0 ? 'left' : 'right';
+      currentX = eMove.clientX;
 
       el.style.transform = 'translate3d(' + -shift + 'px, 0, 0)';
     }
@@ -2605,7 +2609,7 @@ function makeSwipeable(el, callback) {
               var p = 1 - progress;
               el.style.transform = 'translate3d(' + -shift * p + 'px, 0, 0)';
 
-              if (progress === 1) {
+              if (progress === 1 && Math.abs(currentX - firstX) > 30) {
                 callback(dir);
               }
             }
