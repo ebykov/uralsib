@@ -2576,16 +2576,16 @@ function makeSwipeable(el, callback) {
       return false;
     }
 
-    eDown.preventDefault();
+    // eDown.preventDefault();
 
     if (eDown.touches) {
       eDown = eDown.touches[0];
 
-      if (eDown.clientY !== lastY) {
-        return false;
-      }
-
-      lastY = eDown.clientY;
+      // if (eDown.clientY !== lastY) {
+      //   return false;
+      // }
+      //
+      // lastY = eDown.clientY;
     }
 
     // x = eDown.clientX + shift;
