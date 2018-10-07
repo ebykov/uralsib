@@ -2569,6 +2569,7 @@ function makeSwipeable(el, callback) {
   var x = 0;
   var shift = 0;
   var direction = null;
+  var lastY = void 0;
 
   function down(eDown) {
     if (el.closest('.is-correct') || el.closest('.is-incorrect')) {
@@ -2579,6 +2580,12 @@ function makeSwipeable(el, callback) {
 
     if (eDown.touches) {
       eDown = eDown.touches[0];
+
+      if (eDown.clientY !== lastY) {
+        return false;
+      }
+
+      lastY = eDown.clientY;
     }
 
     // x = eDown.clientX + shift;
