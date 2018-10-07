@@ -2569,33 +2569,24 @@ function makeSwipeable(el, callback) {
   var x = 0;
   var shift = 0;
   var direction = null;
-  var lastY = void 0;
 
   function down(eDown) {
     if (el.closest('.is-correct') || el.closest('.is-incorrect')) {
       return false;
     }
 
-    // eDown.preventDefault();
-
     if (eDown.touches) {
       eDown = eDown.touches[0];
-
-      // if (eDown.clientY !== lastY) {
-      //   return false;
-      // }
-      //
-      // lastY = eDown.clientY;
     }
 
     // x = eDown.clientX + shift;
     x = eDown.clientX;
 
     function move(eMove) {
-      eMove.preventDefault();
       if (eMove.touches) {
         eMove = eMove.touches[0];
       }
+
       shift = x - eMove.clientX;
       direction = x - eMove.clientX > 0 ? 'left' : 'right';
 
@@ -2603,8 +2594,6 @@ function makeSwipeable(el, callback) {
     }
 
     function up(eUp) {
-      eUp.preventDefault();
-
       if (direction) {
         (function (dir) {
           (0, _animate.requestAnimate)({
