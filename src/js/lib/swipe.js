@@ -4,29 +4,29 @@ export default function makeSwipeable(el, callback) {
   let x = 0;
   let shift = 0;
   let direction = null;
+  let firstX;
+  let currentX;
 
   function down(eDown) {
     if (el.closest('.is-correct') || el.closest('.is-incorrect')) { return false; }
-
-    eDown.preventDefault();
 
     if (eDown.touches) { eDown = eDown.touches[0]; }
 
     // x = eDown.clientX + shift;
     x = eDown.clientX;
+    firstX = x;
 
     function move(eMove) {
-      eMove.preventDefault();
       if (eMove.touches) { eMove = eMove.touches[0]; }
+
       shift = x - eMove.clientX;
       direction = (x - eMove.clientX) > 0 ? 'left' : 'right';
+      currentX = eMove.clientX;
 
       el.style.transform = `translate3d(${-shift}px, 0, 0)`;
     }
 
     function up(eUp) {
-      eUp.preventDefault();
-
       if (direction) {
         (function (dir) {
           requestAnimate({
@@ -36,7 +36,7 @@ export default function makeSwipeable(el, callback) {
               const p = 1 - progress;
               el.style.transform = `translate3d(${(-shift) * p}px, 0, 0)`;
 
-              if (progress === 1) {
+              if (progress === 1 && Math.abs(currentX - firstX) > 30) {
                 callback(dir);
               }
             },
