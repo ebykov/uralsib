@@ -186,6 +186,7 @@
 }
 .uralsib {
   position: relative;
+  z-index: 99;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -252,7 +253,7 @@
   top: 0;
   left: 0;
   width: 36%;
-  max-width: 231px;
+  max-width: 231px !important;
 }
 .uralsib__bg-business {
   position: absolute;
@@ -260,16 +261,28 @@
   bottom: 0;
   right: 0;
   width: 52%;
-  max-width: 331px;
+  max-width: 331px !important;
 }
 .uralsib__logo {
   position: absolute;
   z-index: 2;
   top: 5px;
   right: 12px;
+  display: block;
   width: 148px;
   height: 30px;
-  color: #fff;
+  color: #fff !important;
+  border: 0 !important;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+.uralsib__logo:hover {
+  opacity: 0.6;
+}
+@media (hover: none), (hover: on-demand) {
+  .uralsib__logo:hover {
+    opacity: 1;
+  }
 }
 @media (min-width: 680px) {
   .uralsib__logo {
@@ -296,10 +309,23 @@
 .uralsib-enter__title {
   position: relative;
   z-index: 2;
-  color: #fff;
+  color: #fff !important;
   font-size: 32px;
   font-weight: 700;
   line-height: 1.417em;
+  border: 0 !important;
+}
+a.uralsib-enter__title {
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+@media (hover: none), (hover: on-demand) {
+  a.uralsib-enter__title {
+    opacity: 1;
+  }
+}
+a.uralsib-enter__title:hover {
+  opacity: 0.6;
 }
 @media (min-width: 680px) {
   .uralsib-enter__title {
@@ -889,8 +915,8 @@
   }
 }
 .uralsib-offer__text a {
-  color: #ffd100;
-  border-bottom: 1px solid #ffd100;
+  color: #ffd100 !important;
+  border-bottom: 1px solid #ffd100 !important;
   -webkit-transition: opacity 0.2s;
   transition: opacity 0.2s;
 }
@@ -933,10 +959,11 @@
   display: block;
   width: 200px;
   height: 50px;
-  color: #002d72;
+  color: #002d72 !important;
   font-weight: 700;
   line-height: 50px;
   text-align: center;
+  border: 0 !important;
   border-radius: 5px;
   background: #fff;
   -webkit-box-shadow: 0px 5px 5px rgba(0,0,0,0.2);

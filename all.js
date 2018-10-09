@@ -956,14 +956,25 @@ var Special = function (_BaseSpecial) {
         srcset: _data2.default.bg.business2x + ' 2x'
       });
 
-      EL.logo = (0, _dom.makeElement)('div', CSS.main + '__logo', {
+      EL.logo = (0, _dom.makeElement)('a', CSS.main + '__logo', {
+        href: 'https://www.uralsib.ru/',
+        target: '_blank',
         innerHTML: _svg2.default.logo
       });
 
       EL.enter = (0, _dom.makeElement)('div', CSS.main + '-enter');
-      EL.eTitle = (0, _dom.makeElement)('div', CSS.main + '-enter__title', {
-        innerHTML: _data2.default.title
-      });
+
+      if (this.params.isFeed) {
+        EL.eTitle = (0, _dom.makeElement)('a', CSS.main + '-enter__title', {
+          href: 'https://vc.ru/special/uralsib',
+          innerHTML: _data2.default.title
+        });
+      } else {
+        EL.eTitle = (0, _dom.makeElement)('div', CSS.main + '-enter__title', {
+          innerHTML: _data2.default.title
+        });
+      }
+
       EL.eDesc = (0, _dom.makeElement)('div', CSS.main + '-enter__description', {
         innerHTML: _data2.default.description
       });
