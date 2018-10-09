@@ -49,9 +49,18 @@ class Special extends BaseSpecial {
     });
 
     EL.enter = makeElement('div', `${CSS.main}-enter`);
-    EL.eTitle = makeElement('div', `${CSS.main}-enter__title`, {
-      innerHTML: Data.title,
-    });
+
+    if (this.params.isFeed) {
+      EL.eTitle = makeElement('a', `${CSS.main}-enter__title`, {
+        href: 'https://vc.ru/special/uralsib',
+        innerHTML: Data.title,
+      });
+    } else {
+      EL.eTitle = makeElement('div', `${CSS.main}-enter__title`, {
+        innerHTML: Data.title,
+      });
+    }
+
     EL.eDesc = makeElement('div', `${CSS.main}-enter__description`, {
       innerHTML: Data.description,
     });
