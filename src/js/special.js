@@ -44,7 +44,9 @@ class Special extends BaseSpecial {
       srcset: `${Data.bg.business2x} 2x`,
     });
 
-    EL.logo = makeElement('div', `${CSS.main}__logo`, {
+    EL.logo = makeElement('a', `${CSS.main}__logo`, {
+      href: 'https://www.uralsib.ru/',
+      target: '_blank',
       innerHTML: Svg.logo,
     });
 
