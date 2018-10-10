@@ -301,7 +301,7 @@ class Special extends BaseSpecial {
     this.showCount();
 
     EL.qCard.appendChild(EL.card);
-    animate(EL.card, 'fadeInDown');
+    animate(EL.card, 'zoomIn', '200ms');
   }
 
   answer(t) {
