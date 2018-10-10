@@ -351,7 +351,7 @@ class Special extends BaseSpecial {
     this.container.removeChild(EL.q);
     this.container.appendChild(EL.result);
 
-    EL.rText.innerHTML = `Идеи для бизнеса повсюду, но распознать их не всегда легко. <b>У вас это получилось в ${this.correctAnswers} из ${Data.questions.length} ситуаций</b>.`;
+    EL.rText.innerHTML = `Идеи для бизнеса повсюду, но распознать их не всегда легко. <b>У вас это получилось в <span style="color: #FFD100;">${this.correctAnswers} из ${Data.questions.length}</span> ситуаций</b>.`;
     EL.rTitle.innerHTML = result.title;
     EL.rSubtitle.innerHTML = result.subtitle;
     EL.rImg.src = result.img;
