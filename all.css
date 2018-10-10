@@ -32,6 +32,10 @@
   -webkit-animation-name: fadeOutRight;
           animation-name: fadeOutRight;
 }
+.zoomIn {
+  -webkit-animation-name: zoomIn;
+          animation-name: zoomIn;
+}
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0;
@@ -170,6 +174,26 @@
     opacity: 0;
     -webkit-transform: translate3d(50%, 0, 0);
             transform: translate3d(50%, 0, 0);
+  }
+}
+@-webkit-keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+            transform: scale3d(0.3, 0.3, 0.3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+            transform: scale3d(0.3, 0.3, 0.3);
+  }
+  50% {
+    opacity: 1;
   }
 }
 .wrapper {
@@ -388,7 +412,7 @@ a.uralsib-enter__title:hover {
 }
 .uralsib-q__card {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   min-height: 400px;
 }
 @media (min-width: 680px) {
@@ -436,7 +460,7 @@ a.uralsib-enter__title:hover {
 }
 .uralsib-q__option {
   position: absolute;
-  z-index: 3;
+  z-index: 2;
   bottom: -15px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -521,6 +545,7 @@ a.uralsib-enter__title:hover {
 }
 .uralsib-q.is-correct .uralsib-q__option,
 .uralsib-q.is-incorrect .uralsib-q__option {
+  z-index: 4;
   color: #002d72;
   background-color: #fff;
   cursor: default;
@@ -996,6 +1021,11 @@ a.uralsib-enter__title:hover {
   left: 4px;
   -webkit-transform: translate3d(0, -50%, 0) scale(-1);
           transform: translate3d(0, -50%, 0) scale(-1);
+}
+@media (hover: none), (hover: on-demand) {
+  .uralsib-offer__back-btn {
+    opacity: 1;
+  }
 }
 .uralsib-offer__back-btn:hover {
   opacity: 1;

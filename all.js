@@ -1214,7 +1214,7 @@ var Special = function (_BaseSpecial) {
       this.showCount();
 
       EL.qCard.appendChild(EL.card);
-      (0, _animate.animate)(EL.card, 'fadeInDown');
+      (0, _animate.animate)(EL.card, 'zoomIn', '200ms');
     }
   }, {
     key: 'answer',
@@ -1268,7 +1268,7 @@ var Special = function (_BaseSpecial) {
       this.container.removeChild(EL.q);
       this.container.appendChild(EL.result);
 
-      EL.rText.innerHTML = '\u0418\u0434\u0435\u0438 \u0434\u043B\u044F \u0431\u0438\u0437\u043D\u0435\u0441\u0430 \u043F\u043E\u0432\u0441\u044E\u0434\u0443, \u043D\u043E \u0440\u0430\u0441\u043F\u043E\u0437\u043D\u0430\u0442\u044C \u0438\u0445 \u043D\u0435 \u0432\u0441\u0435\u0433\u0434\u0430 \u043B\u0435\u0433\u043A\u043E. <b>\u0423 \u0432\u0430\u0441 \u044D\u0442\u043E \u043F\u043E\u043B\u0443\u0447\u0438\u043B\u043E\u0441\u044C \u0432 ' + this.correctAnswers + ' \u0438\u0437 ' + _data2.default.questions.length + ' \u0441\u0438\u0442\u0443\u0430\u0446\u0438\u0439</b>.';
+      EL.rText.innerHTML = '\u0418\u0434\u0435\u0438 \u0434\u043B\u044F \u0431\u0438\u0437\u043D\u0435\u0441\u0430 \u043F\u043E\u0432\u0441\u044E\u0434\u0443, \u043D\u043E \u0440\u0430\u0441\u043F\u043E\u0437\u043D\u0430\u0442\u044C \u0438\u0445 \u043D\u0435 \u0432\u0441\u0435\u0433\u0434\u0430 \u043B\u0435\u0433\u043A\u043E. <b>\u0423 \u0432\u0430\u0441 \u044D\u0442\u043E \u043F\u043E\u043B\u0443\u0447\u0438\u043B\u043E\u0441\u044C \u0432 <span style="color: #FFD100;">' + this.correctAnswers + ' \u0438\u0437 ' + _data2.default.questions.length + '</span> \u0441\u0438\u0442\u0443\u0430\u0446\u0438\u0439</b>.';
       EL.rTitle.innerHTML = result.title;
       EL.rSubtitle.innerHTML = result.subtitle;
       EL.rImg.src = result.img;
@@ -2620,7 +2620,7 @@ function makeSwipeable(el, callback) {
               var p = 1 - progress;
               el.style.transform = 'translate3d(' + -shift * p + 'px, 0, 0)';
 
-              if (progress === 1 && Math.abs(currentX - firstX) > 30) {
+              if (progress === 1 && Math.abs(currentX - firstX) > el.offsetWidth / 2) {
                 callback(dir);
               }
             }
