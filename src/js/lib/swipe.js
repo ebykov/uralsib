@@ -36,7 +36,7 @@ export default function makeSwipeable(el, callback) {
               const p = 1 - progress;
               el.style.transform = `translate3d(${(-shift) * p}px, 0, 0)`;
 
-              if (progress === 1 && Math.abs(currentX - firstX) > 30) {
+              if (progress === 1 && Math.abs(currentX - firstX) > (el.offsetWidth / 2)) {
                 callback(dir);
               }
             },
