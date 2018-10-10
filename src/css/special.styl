@@ -714,8 +714,13 @@ colors = {
       font-weight: 700
       line-height: 21px
 
-      & p:not(:last-child)
-        margin-bottom: 20px
+      & p
+        padding 0
+        margin 0 !important
+        line-height inherit !important
+
+        &:not(:last-child)
+          margin-bottom: 20px !important
 
     &__btn
       margin-top: 34px
