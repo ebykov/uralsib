@@ -185,7 +185,7 @@ colors = {
 
     &__card
       position: relative
-      z-index: 2
+      z-index: 3
       min-height: 400px
 
       @media $mq.not_mobile
@@ -228,7 +228,7 @@ colors = {
 
     &__option
       position: absolute
-      z-index: 3
+      z-index: 2
       bottom: -15px
       display: flex
       justify-content: center
@@ -286,6 +286,7 @@ colors = {
 
       ^[0]-q.is-correct &
       ^[0]-q.is-incorrect &
+        z-index: 4
         color: colors.main
         background-color: #ffffff
         cursor: default
