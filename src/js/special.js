@@ -201,7 +201,7 @@ class Special extends BaseSpecial {
       innerHTML: Svg.swipe,
     });
     EL.hText = makeElement('div', `${CSS.main}-help__text`, {
-      innerHTML: '<p>Свайпай карточку вправо, если считаешь, что это ситуация из бизнеса.</p><p>Влево — если из фильма.</p>',
+      innerHTML: '<p>Свайпайте карточку вправо, если считаешь, что это ситуация из бизнеса.</p><p>Влево — если из фильма.</p>',
     });
     EL.hBtn = makeElement('button', `${CSS.main}-help__btn`, {
       textContent: 'Понятно',
