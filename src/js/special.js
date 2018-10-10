@@ -167,7 +167,7 @@ class Special extends BaseSpecial {
       innerHTML: Svg.payment,
     });
     EL.oBlockText = makeElement('div', `${CSS.main}-offer__block-text`, {
-      innerHTML: 'Начинающим предпринимателям «Уралсиб» предлагает отдельные тарифы: банк бесплатно откроет вам счёт и первые три месяца будет бесплатно его обслуживать.',
+      innerHTML: 'Начинающие предприниматели могут зарегистрировать свой бизнес на сайте «Уралсиба» и получить год обслуживания расчётного счёта бесплатно.',
     });
     EL.oBlockBtn = makeElement('a', `${CSS.main}-offer__block-btn`, {
       href: 'https://old.uralsib.ru/smallbusiness/start.wbp',

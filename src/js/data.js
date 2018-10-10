@@ -2,8 +2,8 @@
  * Все текстовые значения рекомендуется хранить здесь
  */
 export default {
-  title: 'Идея для бизнеса или завязка фильма',
-  description: 'Если это сюжет из фильма, смахивайте карточку влево, а если из ситуации вырос бизнес — вправо.',
+  title: 'Идея для бизнеса или сюжет из фильма',
+  description: 'Если из ситуации вырос бизнес, смахните карточку вправо, а если это сюжет из фильма — влево.',
   bg: {
     movie: 'https://leonardo.osnova.io/15aed67a-7d2e-a5c9-6dca-a38af3df1955/',
     movie2x: 'https://leonardo.osnova.io/a6d97f90-5912-6335-4313-7538299fecd4/',
@@ -14,12 +14,12 @@ export default {
     img: 'https://leonardo.osnova.io/603de5a4-10e3-61f8-6efc-b2c03db4be7d/',
     img2x: 'https://leonardo.osnova.io/3ebee9b2-9252-a1d1-02dd-2a2069c005f0/',
     text: '<p>Молодой человек взял с собой в автобусную поездку ноутбук, чтобы поработать. В начале пути он заметил, что забыл дома флешку с материалами.</p>',
-    correctMsg: '<p>Вы правы. Ему пришла в голову идея создать сервис облачного хранения данных — так появился Dropbox. Герой этой истории — Дрю Хьюстон — теперь долларовый миллиардер.</p>',
-    incorrectMsg: '<p>Вы не правы. Герой этой истории, Дрю Хьюстон, придумал сервис Dropbox, чтобы хранить нужные файлы в облаке.</p>',
+    correctMsg: '<p>Вы правы. Ему пришла в голову идея создать сервис облачного хранения данных — так появился Dropbox. Герой этой истории теперь долларовый миллиардер.</p>',
+    incorrectMsg: '<p>Вы не правы. Герой этой истории придумал сервис Dropbox, чтобы хранить нужные файлы в облаке.</p>',
     correct: 'right',
     info: {
       avatar: 'https://leonardo.osnova.io/27086adc-1f57-f07f-66e2-f7cd76bf6559/',
-      bio: '<p><b>Дрю Хьюстон</b></p><p>Основатель Dropbox</p>',
+      bio: '<p><b>Дрю Хьюстон</b></p><p>Придумал свой облачный сервис</p>',
     },
   }, {
     img: 'https://leonardo.osnova.io/0673ba59-d386-19b7-2c58-85bc8892f871/',
@@ -30,7 +30,7 @@ export default {
     correct: 'left',
     info: {
       avatar: 'https://leonardo.osnova.io/e004f241-75c7-156f-919a-f4d93b784a4e/',
-      bio: '<p><b>Фантомас</b></p><p>Фильм</p>',
+      bio: '<p><b>Фильм «Фантомас»</b></p>',
     },
   }, {
     img: 'https://leonardo.osnova.io/c0b25d02-489b-67b3-572d-37f88aa6704f/',
@@ -41,7 +41,7 @@ export default {
     correct: 'right',
     info: {
       avatar: 'https://leonardo.osnova.io/2e28bf46-e866-54be-9cde-cccd3d0149e9/',
-      bio: '<p><b>Джо Маддалена</b></p><p>Коллекционер</p>',
+      bio: '<p><b>Джо Маддалена</b></p><p>Создал аукцион</p>',
     },
   }, {
     img: 'https://leonardo.osnova.io/eb494497-cef7-16b9-3d76-7961f500005c/',
@@ -52,7 +52,7 @@ export default {
     correct: 'right',
     info: {
       avatar: 'https://leonardo.osnova.io/b6c7bd98-3202-80a7-f22d-72136332cacc/',
-      bio: '<p><b>Ким Левин</b></p><p>Создатель Wuvit</p>',
+      bio: '<p><b>Ким Левин</b></p><p>Придумала спа-подушку</p>',
     },
   }, {
     img: 'https://leonardo.osnova.io/4d07e16f-5a97-7bdd-323d-97ab6c9f7f3b/',
@@ -63,7 +63,7 @@ export default {
     correct: 'left',
     info: {
       avatar: 'https://leonardo.osnova.io/38696e2e-a3ef-b364-ca39-9638755c8da9/',
-      bio: '<p><b>Бойцовский клуб</b></p><p>Фильм</p>',
+      bio: '<p><b>Фильм «Бойцовский клуб»</b></p>',
     },
   }, {
     img: 'https://leonardo.osnova.io/c2a97e67-e625-412b-c759-1a2f082a9963/',
@@ -74,7 +74,7 @@ export default {
     correct: 'right',
     info: {
       avatar: 'https://leonardo.osnova.io/b45f64af-569b-c596-f1c8-a53d6cca07b0/',
-      bio: '<p><b>Тай Уорнер</b></p><p>Beanie Babies</p>',
+      bio: '<p><b>Тай Уорнер</b></p><p>Спланировал дефицит игрушек</p>',
     },
   }, {
     img: 'https://leonardo.osnova.io/9449862f-51b4-34a0-f02d-011eeddaa2dc/',
@@ -85,7 +85,7 @@ export default {
     correct: 'left',
     info: {
       avatar: 'https://leonardo.osnova.io/74d549b9-0fb3-e2d4-61d6-0826bda2a1e1/',
-      bio: '<p><b>Большой Лебовски</b></p><p>Фильм</p>',
+      bio: '<p><b>Фильм «Большой Лебовски»</b></p>',
     },
   }, {
     img: 'https://leonardo.osnova.io/948d1a2a-5f5e-c396-57e2-c4f8d04db9a8/',
@@ -96,7 +96,7 @@ export default {
     correct: 'right',
     info: {
       avatar: 'https://leonardo.osnova.io/13fe5be2-bf9b-0912-b0d5-d5969a9c89b4/',
-      bio: '<p><b>Ник Вудман</b></p><p>Основатель GoPro</p>',
+      bio: '<p><b>Ник Вудман</b></p><p>Придумал свою экшн-камеру</p>',
     },
   }, {
     img: 'https://leonardo.osnova.io/52c30d3b-1d39-89b7-6d5a-2f4283312bcc/',
@@ -107,7 +107,7 @@ export default {
     correct: 'left',
     info: {
       avatar: 'https://leonardo.osnova.io/d1dfffd0-735c-1795-5d13-18592ff98322/',
-      bio: '<p><b>Леон</b></p>Фильм<p></p>',
+      bio: '<p><b>Фильм «Леон»</b></p>',
     },
   }, {
     img: 'https://leonardo.osnova.io/2149a5ee-1517-3346-92f8-3daa11757c7b/',
@@ -118,7 +118,7 @@ export default {
     correct: 'right',
     info: {
       avatar: 'https://leonardo.osnova.io/09f33026-be80-3938-88b3-72bfe34605e2/',
-      bio: '<p><b>Трое друзей</b></p><p>Основатели Airbnb</p>',
+      bio: '<p><b>Брайан Чески и Джо Геббиа</b></p><p>Основали проект для аренды жилья</p>',
     },
   }],
   results: [{
