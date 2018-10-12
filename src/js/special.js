@@ -265,6 +265,28 @@ class Special extends BaseSpecial {
     if (/Mobi|Android/i.test(navigator.userAgent) || window.innerWidth <= 768) {
       this.container.appendChild(EL.help);
       animate(EL.help, 'fadeIn', '200ms', '400ms');
+    } else {
+      EL.qOptionL.addEventListener('mouseenter', () => {
+        const qHint = makeElement('div', `${CSS.main}-q__option-hint`, {
+          innerHTML: `${Svg.swipeL}<div>Или свайпни карточку влево</div>`,
+        });
+        EL.qOptionL.appendChild(qHint);
+
+        EL.qOptionL.addEventListener('mouseleave', () => {
+          EL.qOptionL.removeChild(qHint);
+        }, { once: true });
+      }, { once: true });
+
+      EL.qOptionR.addEventListener('mouseenter', () => {
+        const qHint = makeElement('div', `${CSS.main}-q__option-hint`, {
+          innerHTML: `${Svg.swipeR}<div>Или свайпни карточку вправо</div>`,
+        });
+        EL.qOptionR.appendChild(qHint);
+
+        EL.qOptionR.addEventListener('mouseleave', () => {
+          EL.qOptionR.removeChild(qHint);
+        }, { once: true });
+      }, { once: true });
     }
   }
 
