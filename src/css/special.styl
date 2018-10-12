@@ -738,10 +738,12 @@ colors = {
 
     &__text
       margin-top: 6px
+      margin-bottom: 30px
       color: #ffffff
       line-height: 1.4em
 
       @media $mq.not_mobile
+        margin-bottom: 50px
         line-height: 1.778em
 
       & a
@@ -757,14 +759,14 @@ colors = {
 
     &__block
       width: calc(100% + 10px)
-      margin: 15px 0 30px -5px
+      margin: 0 0 15px -5px
       padding: 10px
       border-radius: 5px
       background-color: colors.extra
 
       @media $mq.not_mobile
         width: calc(100% + 30px)
-        margin: 20px 0 50px -20px
+        margin: 0px 0 20px -20px
         padding: 15px 20px 20px
 
     &__block-icon
@@ -818,6 +820,7 @@ colors = {
 
     &__img
       position: absolute
+      z-index: -1
       bottom: -35px
       right: -65px
 

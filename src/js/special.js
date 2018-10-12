@@ -196,9 +196,9 @@ class Special extends BaseSpecial {
     EL.oBlock.appendChild(EL.oBlockText);
     EL.oBlock.appendChild(EL.oBlockBtn);
 
+    EL.offer.appendChild(EL.oBlock);
     EL.offer.appendChild(EL.oIcon);
     EL.offer.appendChild(EL.oText);
-    EL.offer.appendChild(EL.oBlock);
     EL.offer.appendChild(EL.oBackBtn);
     EL.offer.appendChild(EL.oImg);
 
