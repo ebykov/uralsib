@@ -601,6 +601,12 @@ a.uralsib-enter__title:hover {
   left: 0;
   right: 0;
   margin: auto;
+  width: 34px;
+}
+@media (min-width: 680px) {
+  .uralsib-q__option-icon svg {
+    width: auto;
+  }
 }
 .uralsib-q__option-caption {
   position: absolute;
@@ -689,10 +695,68 @@ a.uralsib-enter__title:hover {
 }
 [data-dir="left"] .uralsib-card__hint--left {
   visibility: visible;
+}
+[data-opacity="10"][data-dir="left"] .uralsib-card__hint--left {
+  opacity: 0.1;
+}
+[data-opacity="20"][data-dir="left"] .uralsib-card__hint--left {
+  opacity: 0.2;
+}
+[data-opacity="30"][data-dir="left"] .uralsib-card__hint--left {
+  opacity: 0.3;
+}
+[data-opacity="40"][data-dir="left"] .uralsib-card__hint--left {
+  opacity: 0.4;
+}
+[data-opacity="50"][data-dir="left"] .uralsib-card__hint--left {
+  opacity: 0.5;
+}
+[data-opacity="60"][data-dir="left"] .uralsib-card__hint--left {
+  opacity: 0.6;
+}
+[data-opacity="70"][data-dir="left"] .uralsib-card__hint--left {
+  opacity: 0.7;
+}
+[data-opacity="80"][data-dir="left"] .uralsib-card__hint--left {
+  opacity: 0.8;
+}
+[data-opacity="90"][data-dir="left"] .uralsib-card__hint--left {
+  opacity: 0.9;
+}
+[data-opacity="100"][data-dir="left"] .uralsib-card__hint--left {
   opacity: 1;
 }
 [data-dir="right"] .uralsib-card__hint--right {
   visibility: visible;
+}
+[data-opacity="10"][data-dir="right"] .uralsib-card__hint--right {
+  opacity: 0.1;
+}
+[data-opacity="20"][data-dir="right"] .uralsib-card__hint--right {
+  opacity: 0.2;
+}
+[data-opacity="30"][data-dir="right"] .uralsib-card__hint--right {
+  opacity: 0.3;
+}
+[data-opacity="40"][data-dir="right"] .uralsib-card__hint--right {
+  opacity: 0.4;
+}
+[data-opacity="50"][data-dir="right"] .uralsib-card__hint--right {
+  opacity: 0.5;
+}
+[data-opacity="60"][data-dir="right"] .uralsib-card__hint--right {
+  opacity: 0.6;
+}
+[data-opacity="70"][data-dir="right"] .uralsib-card__hint--right {
+  opacity: 0.7;
+}
+[data-opacity="80"][data-dir="right"] .uralsib-card__hint--right {
+  opacity: 0.8;
+}
+[data-opacity="90"][data-dir="right"] .uralsib-card__hint--right {
+  opacity: 0.9;
+}
+[data-opacity="100"][data-dir="right"] .uralsib-card__hint--right {
   opacity: 1;
 }
 @media (min-width: 568px) {
@@ -815,6 +879,8 @@ a.uralsib-enter__title:hover {
   }
 }
 .uralsib-card-answer__info-img {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   display: block;
   width: 80px;
   height: 80px;
