@@ -907,7 +907,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 // import * as Analytics from './lib/analytics';
-// import { shuffle } from './lib/array';
 
 var CSS = {
   main: 'uralsib'
@@ -1002,6 +1001,12 @@ var Special = function (_BaseSpecial) {
       EL.qCards = (0, _dom.makeElement)('div', CSS.main + '-q__cards');
       EL.qCard = (0, _dom.makeElement)('div', CSS.main + '-q__card');
       EL.card = (0, _dom.makeElement)('div', CSS.main + '-card');
+      EL.cHintL = (0, _dom.makeElement)('div', [CSS.main + '-card__hint', CSS.main + '-card__hint--left'], {
+        innerHTML: '<div class="' + CSS.main + '-card__hint-icon">' + _svg2.default.movie + '</div><div class="' + CSS.main + '-card__hint-caption">\u0424\u0438\u043B\u044C\u043C</div>'
+      });
+      EL.cHintR = (0, _dom.makeElement)('div', [CSS.main + '-card__hint', CSS.main + '-card__hint--right'], {
+        innerHTML: '<div class="' + CSS.main + '-card__hint-icon">' + _svg2.default.case + '</div><div class="' + CSS.main + '-card__hint-caption">\u0411\u0438\u0437\u043D\u0435\u0441</div>'
+      });
       EL.cHead = (0, _dom.makeElement)('div', CSS.main + '-card__head');
       EL.cBottom = (0, _dom.makeElement)('div', CSS.main + '-card__bottom');
       EL.cImg = (0, _dom.makeElement)('img', CSS.main + '-card__img');
@@ -1038,6 +1043,8 @@ var Special = function (_BaseSpecial) {
 
       EL.card.appendChild(EL.cHead);
       EL.card.appendChild(EL.cBottom);
+      EL.card.appendChild(EL.cHintL);
+      EL.card.appendChild(EL.cHintR);
 
       EL.qCard.appendChild(EL.card);
 
@@ -1083,7 +1090,7 @@ var Special = function (_BaseSpecial) {
         innerHTML: _svg2.default.payment
       });
       EL.oBlockText = (0, _dom.makeElement)('div', CSS.main + '-offer__block-text', {
-        innerHTML: 'Начинающим предпринимателям «Уралсиб» предлагает отдельные тарифы: банк бесплатно откроет вам счёт и первые три месяца будет бесплатно его обслуживать.'
+        innerHTML: 'Начинающие предприниматели могут зарегистрировать свой бизнес на сайте «Уралсиба» и получить год обслуживания расчётного счёта бесплатно.'
       });
       EL.oBlockBtn = (0, _dom.makeElement)('a', CSS.main + '-offer__block-btn', {
         href: 'https://old.uralsib.ru/smallbusiness/start.wbp',
@@ -1117,7 +1124,7 @@ var Special = function (_BaseSpecial) {
         innerHTML: _svg2.default.swipe
       });
       EL.hText = (0, _dom.makeElement)('div', CSS.main + '-help__text', {
-        innerHTML: '<p>Свайпай карточку вправо, если считаешь, что это ситуация из бизнеса.</p><p>Влево — если из фильма.</p>'
+        innerHTML: '<p>Свайпайте карточку вправо, если считаешь, что это ситуация из бизнеса.</p><p>Влево — если из фильма.</p>'
       });
       EL.hBtn = (0, _dom.makeElement)('button', CSS.main + '-help__btn', {
         textContent: 'Понятно',
@@ -1166,6 +1173,28 @@ var Special = function (_BaseSpecial) {
       if (/Mobi|Android/i.test(navigator.userAgent) || window.innerWidth <= 768) {
         this.container.appendChild(EL.help);
         (0, _animate.animate)(EL.help, 'fadeIn', '200ms', '400ms');
+      } else {
+        EL.qOptionL.addEventListener('mouseenter', function () {
+          var qHint = (0, _dom.makeElement)('div', CSS.main + '-q__option-hint', {
+            innerHTML: _svg2.default.swipeL + '<div>\u0418\u043B\u0438 \u0441\u0432\u0430\u0439\u043F\u043D\u0438 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0443 \u0432\u043B\u0435\u0432\u043E</div>'
+          });
+          EL.qOptionL.appendChild(qHint);
+
+          EL.qOptionL.addEventListener('mouseleave', function () {
+            EL.qOptionL.removeChild(qHint);
+          }, { once: true });
+        }, { once: true });
+
+        EL.qOptionR.addEventListener('mouseenter', function () {
+          var qHint = (0, _dom.makeElement)('div', CSS.main + '-q__option-hint', {
+            innerHTML: _svg2.default.swipeR + '<div>\u0418\u043B\u0438 \u0441\u0432\u0430\u0439\u043F\u043D\u0438 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0443 \u0432\u043F\u0440\u0430\u0432\u043E</div>'
+          });
+          EL.qOptionR.appendChild(qHint);
+
+          EL.qOptionR.addEventListener('mouseleave', function () {
+            EL.qOptionR.removeChild(qHint);
+          }, { once: true });
+        }, { once: true });
       }
     }
 
@@ -1491,8 +1520,8 @@ Object.defineProperty(exports, "__esModule", {
  * Все текстовые значения рекомендуется хранить здесь
  */
 exports.default = {
-  title: 'Идея для бизнеса или завязка фильма',
-  description: 'Если это сюжет из фильма, смахивайте карточку влево, а если из ситуации вырос бизнес — вправо.',
+  title: 'Идея для бизнеса или сюжет из фильма',
+  description: 'Если из ситуации вырос бизнес, смахните карточку вправо, а если это сюжет из фильма — влево.',
   bg: {
     movie: 'https://leonardo.osnova.io/15aed67a-7d2e-a5c9-6dca-a38af3df1955/',
     movie2x: 'https://leonardo.osnova.io/a6d97f90-5912-6335-4313-7538299fecd4/',
@@ -1503,12 +1532,12 @@ exports.default = {
     img: 'https://leonardo.osnova.io/603de5a4-10e3-61f8-6efc-b2c03db4be7d/',
     img2x: 'https://leonardo.osnova.io/3ebee9b2-9252-a1d1-02dd-2a2069c005f0/',
     text: '<p>Молодой человек взял с собой в автобусную поездку ноутбук, чтобы поработать. В начале пути он заметил, что забыл дома флешку с материалами.</p>',
-    correctMsg: '<p>Вы правы. Ему пришла в голову идея создать сервис облачного хранения данных — так появился Dropbox. Герой этой истории — Дрю Хьюстон — теперь долларовый миллиардер.</p>',
-    incorrectMsg: '<p>Вы не правы. Герой этой истории, Дрю Хьюстон, придумал сервис Dropbox, чтобы хранить нужные файлы в облаке.</p>',
+    correctMsg: '<p>Вы правы. Ему пришла в голову идея создать сервис облачного хранения данных — так появился Dropbox. Герой этой истории теперь долларовый миллиардер.</p>',
+    incorrectMsg: '<p>Вы не правы. Герой этой истории придумал сервис Dropbox, чтобы хранить нужные файлы в облаке.</p>',
     correct: 'right',
     info: {
       avatar: 'https://leonardo.osnova.io/27086adc-1f57-f07f-66e2-f7cd76bf6559/',
-      bio: '<p><b>Дрю Хьюстон</b></p><p>Основатель Dropbox</p>'
+      bio: '<p><b>Дрю Хьюстон</b></p><p>Придумал свой облачный сервис</p>'
     }
   }, {
     img: 'https://leonardo.osnova.io/0673ba59-d386-19b7-2c58-85bc8892f871/',
@@ -1519,7 +1548,7 @@ exports.default = {
     correct: 'left',
     info: {
       avatar: 'https://leonardo.osnova.io/e004f241-75c7-156f-919a-f4d93b784a4e/',
-      bio: '<p><b>Фантомас</b></p><p>Фильм</p>'
+      bio: '<p><b>Фильм «Фантомас»</b></p>'
     }
   }, {
     img: 'https://leonardo.osnova.io/c0b25d02-489b-67b3-572d-37f88aa6704f/',
@@ -1530,7 +1559,7 @@ exports.default = {
     correct: 'right',
     info: {
       avatar: 'https://leonardo.osnova.io/2e28bf46-e866-54be-9cde-cccd3d0149e9/',
-      bio: '<p><b>Джо Маддалена</b></p><p>Коллекционер</p>'
+      bio: '<p><b>Джо Маддалена</b></p><p>Создал аукцион</p>'
     }
   }, {
     img: 'https://leonardo.osnova.io/eb494497-cef7-16b9-3d76-7961f500005c/',
@@ -1541,7 +1570,7 @@ exports.default = {
     correct: 'right',
     info: {
       avatar: 'https://leonardo.osnova.io/b6c7bd98-3202-80a7-f22d-72136332cacc/',
-      bio: '<p><b>Ким Левин</b></p><p>Создатель Wuvit</p>'
+      bio: '<p><b>Ким Левин</b></p><p>Придумала спа-подушку</p>'
     }
   }, {
     img: 'https://leonardo.osnova.io/4d07e16f-5a97-7bdd-323d-97ab6c9f7f3b/',
@@ -1552,7 +1581,7 @@ exports.default = {
     correct: 'left',
     info: {
       avatar: 'https://leonardo.osnova.io/38696e2e-a3ef-b364-ca39-9638755c8da9/',
-      bio: '<p><b>Бойцовский клуб</b></p><p>Фильм</p>'
+      bio: '<p><b>Фильм «Бойцовский клуб»</b></p>'
     }
   }, {
     img: 'https://leonardo.osnova.io/c2a97e67-e625-412b-c759-1a2f082a9963/',
@@ -1563,7 +1592,7 @@ exports.default = {
     correct: 'right',
     info: {
       avatar: 'https://leonardo.osnova.io/b45f64af-569b-c596-f1c8-a53d6cca07b0/',
-      bio: '<p><b>Тай Уорнер</b></p><p>Beanie Babies</p>'
+      bio: '<p><b>Тай Уорнер</b></p><p>Спланировал дефицит игрушек</p>'
     }
   }, {
     img: 'https://leonardo.osnova.io/9449862f-51b4-34a0-f02d-011eeddaa2dc/',
@@ -1574,7 +1603,7 @@ exports.default = {
     correct: 'left',
     info: {
       avatar: 'https://leonardo.osnova.io/74d549b9-0fb3-e2d4-61d6-0826bda2a1e1/',
-      bio: '<p><b>Большой Лебовски</b></p><p>Фильм</p>'
+      bio: '<p><b>Фильм «Большой Лебовски»</b></p>'
     }
   }, {
     img: 'https://leonardo.osnova.io/948d1a2a-5f5e-c396-57e2-c4f8d04db9a8/',
@@ -1585,7 +1614,7 @@ exports.default = {
     correct: 'right',
     info: {
       avatar: 'https://leonardo.osnova.io/13fe5be2-bf9b-0912-b0d5-d5969a9c89b4/',
-      bio: '<p><b>Ник Вудман</b></p><p>Основатель GoPro</p>'
+      bio: '<p><b>Ник Вудман</b></p><p>Придумал свою экшн-камеру</p>'
     }
   }, {
     img: 'https://leonardo.osnova.io/52c30d3b-1d39-89b7-6d5a-2f4283312bcc/',
@@ -1596,7 +1625,7 @@ exports.default = {
     correct: 'left',
     info: {
       avatar: 'https://leonardo.osnova.io/d1dfffd0-735c-1795-5d13-18592ff98322/',
-      bio: '<p><b>Леон</b></p>Фильм<p></p>'
+      bio: '<p><b>Фильм «Леон»</b></p>'
     }
   }, {
     img: 'https://leonardo.osnova.io/2149a5ee-1517-3346-92f8-3daa11757c7b/',
@@ -1607,7 +1636,7 @@ exports.default = {
     correct: 'right',
     info: {
       avatar: 'https://leonardo.osnova.io/09f33026-be80-3938-88b3-72bfe34605e2/',
-      bio: '<p><b>Трое друзей</b></p><p>Основатели Airbnb</p>'
+      bio: '<p><b>Брайан Чески и Джо Геббиа</b></p><p>Основали проект для аренды жилья</p>'
     }
   }],
   results: [{
@@ -1664,7 +1693,9 @@ exports.default = {
   case: '<svg width="40" height="32.94" viewBox="0 0 40 32.94"><path d="M36.88 4.74h-8.43V3.23A3.23 3.23 0 0 0 25.22 0H14.78a3.23 3.23 0 0 0-3.23 3.23v1.51H3.12A3.13 3.13 0 0 0 0 7.86v22a3.13 3.13 0 0 0 3.12 3.12h33.76A3.13 3.13 0 0 0 40 29.86v-22a3.13 3.13 0 0 0-3.12-3.12zm-22.6-1.51a.5.5 0 0 1 .5-.5h10.44a.5.5 0 0 1 .5.5v1.51H14.28V3.23zM3.12 7.46h33.76a.4.4 0 0 1 .4.4V15c-4.23 1.57-10.6 2.49-17.28 2.49S6.95 16.58 2.73 15V7.86a.4.4 0 0 1 .39-.4zm33.76 22.75H3.12a.4.4 0 0 1-.4-.4v-11.9a54.19 54.19 0 0 0 14.49 2.27v.6a2 2 0 0 0 2 2h1.48a2 2 0 0 0 2-2v-.6a54.1 54.1 0 0 0 14.58-2.28v11.92a.4.4 0 0 1-.39.39z"/></svg>',
   hat: '<svg width="44.6" height="28.4"><path d="M44.56 7.73a.83.83 0 0 0-.51-.52L22.54.04a.82.82 0 0 0-.48 0L.57 7.2a.82.82 0 0 0-.53 1 .8.8 0 0 0 .12.23l.18.22a.81.81 0 0 0 .23.15l8.64 2.88v9.63a.82.82 0 0 0 .06.31 7.39 7.39 0 0 0 2.53 2.84c2.45 1.77 6 2.72 10.31 2.75v-1.64a17.32 17.32 0 0 1-8.53-1.89 6.91 6.91 0 0 1-2.7-2.53V12.19l11.19 3.73a.79.79 0 0 0 .52 0l5.05-1.68v1.24h-.13a2.85 2.85 0 0 0-1.89 2.5l-2 10 1.61.32 1.57-7.76.24.14a2.84 2.84 0 0 0 .48.22h.13v7.29h1.65v-7.24h.13a2.82 2.82 0 0 0 .48-.22l.24-.14.02.21 1.51 7.59 1.61-.32-2-10.15a2.85 2.85 0 0 0-1.88-2.41h-.13v-1.82h.14l4.35-1.45v9.92a4.52 4.52 0 0 1-.54.58L34.3 24a5 5 0 0 0 1.08-1.29.82.82 0 0 0 .08-.36V11.64h.14l8.45-2.84a.82.82 0 0 0 .51-1.07zm-14.9 10.48a1.22 1.22 0 1 1-1.22-1.22 1.22 1.22 0 0 1 1.22 1.22zm10.95-10l-11.35 3.74-.07-.15a.83.83 0 0 0-.34-.41l-3.9-2.34.06-.15a2.82 2.82 0 0 0 .16-.89 2.89 2.89 0 1 0-1.37 2.39l.1-.07.11.06 3.53 2.12-5.24 1.77-18.87-6.3L4 7.8l18.3-6.1 18.87 6.28zm-17.09-.23A1.22 1.22 0 1 1 22.3 6.8a1.22 1.22 0 0 1 1.22 1.18z"/></svg>',
   payment: '<svg width="43.48" height="36"><path d="M43.13 11.69L36 7.59a8.15 8.15 0 0 1 2.7-2.46.69.69 0 0 0 0-1.2L32.06.09a.69.69 0 0 0-.69 0 9.53 9.53 0 0 0-3.16 3l-.57-.33a.69.69 0 0 0-.69 0l-8.88 5.09-.07.07L.24 23.28a.69.69 0 0 0-.24.52v2.56a.69.69 0 0 0 .35.6l15.51 9a.69.69 0 0 0 .69 0l26.58-15.4a.69.69 0 0 0 .35-.6v-7.68a.69.69 0 0 0-.35-.59zM31.72 1.5L37 4.57A9.59 9.59 0 0 0 33.3 11L28 8a8.19 8.19 0 0 1 3.72-6.5zm1.86 11.3a.69.69 0 0 0 1-.6 8.1 8.1 0 0 1 .13-1.2L37 12.28l-3 1.76-9.69-5.6L26.68 7a9.48 9.48 0 0 0-.09 1.33.69.69 0 0 0 .35.6zm-6.3-8.67l.24.14a9.57 9.57 0 0 0-.39.95.69.69 0 0 0-.19.07L22.5 7.85a.69.69 0 0 0 0 1.2l11.08 6.4a.69.69 0 0 0 .69 0l4.43-2.56a.69.69 0 0 0 0-1.2l-3.65-2.11a8.17 8.17 0 0 1 .31-.78l6 3.49-7.43 4.31L19.8 8.45zM1.38 26v-1l14.12 8.15v1zm14.74 5.95L1.88 23.68 18.5 9.29l14.24 8.22zm26-12.34l-25.23 14.5v-1L34.33 18l7.76-4.48v6.08z"/><path d="M30.14 17.2L19 10.79a.69.69 0 0 0-.8.08l-3.35 2.93a.69.69 0 0 0 .15 1.12l11.1 6.41a.69.69 0 0 0 .8-.08l3.39-2.94a.69.69 0 0 0-.15-1.11zm-3.82 2.69l-9.83-5.68 2.29-2 9.83 5.68zM25 21.67l-11.1-6.41a.69.69 0 0 0-.8.08l-8.73 7.54A.69.69 0 0 0 4.48 24l11.1 6.41a.69.69 0 0 0 .8-.08l8.71-7.54a.69.69 0 0 0-.09-1.12zM15.84 29L6 23.29l7.6-6.59 9.83 5.68z"/></svg>',
-  swipe: '<svg width="54.78" height="60"><path d="M35.22 7.82h12.5l-3 3a1.31 1.31 0 0 0 1.85 1.84l5.23-5.22a1.23 1.23 0 0 0 .13-.2 1.28 1.28 0 0 0 .14-.24 1.27 1.27 0 0 0-.25-1.38L46.58.38a1.301 1.301 0 0 0-1.84 1.84l3 3H35.22a1.3 1.3 0 0 0 0 2.6zM7.44 12.66a1.31 1.31 0 0 0 0-1.84l-3-3H17a1.305 1.305 0 0 0 0-2.61H4.45l3-3A1.301 1.301 0 0 0 5.6.38L.38 5.6A1.3 1.3 0 0 0 .1 6a1.31 1.31 0 0 0 0 1 1.28 1.28 0 0 0 .15.23 1.23 1.23 0 0 0 .13.2l5.22 5.23a1.31 1.31 0 0 0 .92.38 1.29 1.29 0 0 0 .92-.38zM49.57 26.09a5.2 5.2 0 0 0-2.9.88 5.22 5.22 0 0 0-7.83-2.61 5.23 5.23 0 0 0-4.93-3.49 5.18 5.18 0 0 0-2.61.7V13a5.22 5.22 0 1 0-10.44 0v22.22l-4.53-3.4a6.84 6.84 0 0 0-8.89.63 3.92 3.92 0 0 0 0 5.53L26 56.56A11.67 11.67 0 0 0 34.32 60h6.11a14.37 14.37 0 0 0 14.35-14.35V31.3a5.22 5.22 0 0 0-5.21-5.21zm2.61 19.57a11.75 11.75 0 0 1-11.74 11.73h-6.12a9.07 9.07 0 0 1-6.46-2.67L9.29 36.14a1.31 1.31 0 0 1 0-1.84 4.22 4.22 0 0 1 5.49-.39l6.62 5a1.3 1.3 0 0 0 2.09-1V13a2.61 2.61 0 1 1 5.22 0v19.61a1.305 1.305 0 0 0 2.61 0v-6.52a2.61 2.61 0 1 1 5.22 0v6.52a1.305 1.305 0 0 0 2.61 0v-3.92a2.61 2.61 0 0 1 5.22 0v3.91a1.305 1.305 0 0 0 2.61 0v-1.3a2.61 2.61 0 0 1 5.22 0v14.35z"/></svg>'
+  swipe: '<svg width="54.78" height="60"><path d="M35.22 7.82h12.5l-3 3a1.31 1.31 0 0 0 1.85 1.84l5.23-5.22a1.23 1.23 0 0 0 .13-.2 1.28 1.28 0 0 0 .14-.24 1.27 1.27 0 0 0-.25-1.38L46.58.38a1.301 1.301 0 0 0-1.84 1.84l3 3H35.22a1.3 1.3 0 0 0 0 2.6zM7.44 12.66a1.31 1.31 0 0 0 0-1.84l-3-3H17a1.305 1.305 0 0 0 0-2.61H4.45l3-3A1.301 1.301 0 0 0 5.6.38L.38 5.6A1.3 1.3 0 0 0 .1 6a1.31 1.31 0 0 0 0 1 1.28 1.28 0 0 0 .15.23 1.23 1.23 0 0 0 .13.2l5.22 5.23a1.31 1.31 0 0 0 .92.38 1.29 1.29 0 0 0 .92-.38zM49.57 26.09a5.2 5.2 0 0 0-2.9.88 5.22 5.22 0 0 0-7.83-2.61 5.23 5.23 0 0 0-4.93-3.49 5.18 5.18 0 0 0-2.61.7V13a5.22 5.22 0 1 0-10.44 0v22.22l-4.53-3.4a6.84 6.84 0 0 0-8.89.63 3.92 3.92 0 0 0 0 5.53L26 56.56A11.67 11.67 0 0 0 34.32 60h6.11a14.37 14.37 0 0 0 14.35-14.35V31.3a5.22 5.22 0 0 0-5.21-5.21zm2.61 19.57a11.75 11.75 0 0 1-11.74 11.73h-6.12a9.07 9.07 0 0 1-6.46-2.67L9.29 36.14a1.31 1.31 0 0 1 0-1.84 4.22 4.22 0 0 1 5.49-.39l6.62 5a1.3 1.3 0 0 0 2.09-1V13a2.61 2.61 0 1 1 5.22 0v19.61a1.305 1.305 0 0 0 2.61 0v-6.52a2.61 2.61 0 1 1 5.22 0v6.52a1.305 1.305 0 0 0 2.61 0v-3.92a2.61 2.61 0 0 1 5.22 0v3.91a1.305 1.305 0 0 0 2.61 0v-1.3a2.61 2.61 0 0 1 5.22 0v14.35z"/></svg>',
+  swipeL: '<svg viewBox="0 0 54.78 60.01"><path d="M7.44 12.67a1.31 1.31 0 0 0 0-1.84l-3-3H17a1.305 1.305 0 1 0 0-2.61H4.45l3-3A1.301 1.301 0 0 0 5.6.39L.38 5.61a1.3 1.3 0 0 0-.28.4 1.31 1.31 0 0 0 0 1 1.28 1.28 0 0 0 .15.23 1.23 1.23 0 0 0 .13.2l5.22 5.23a1.31 1.31 0 0 0 .92.38 1.29 1.29 0 0 0 .92-.38zM49.57 26.1a5.2 5.2 0 0 0-2.9.88 5.22 5.22 0 0 0-7.83-2.61 5.22 5.22 0 0 0-7.54-2.79v-8.57a5.22 5.22 0 0 0-10.44 0v22.22l-4.53-3.4a6.84 6.84 0 0 0-8.89.63 3.92 3.92 0 0 0 0 5.53L26 56.57a11.67 11.67 0 0 0 8.32 3.44h6.11a14.37 14.37 0 0 0 14.35-14.35V31.31a5.22 5.22 0 0 0-5.21-5.21zm2.63 19.56A11.75 11.75 0 0 1 40.44 57.4h-6.12a9.07 9.07 0 0 1-6.46-2.67L9.29 36.15a1.31 1.31 0 0 1 0-1.84 4.22 4.22 0 0 1 5.49-.39l6.62 5a1.3 1.3 0 0 0 2.09-1V13.01a2.61 2.61 0 0 1 5.22 0v19.61a1.305 1.305 0 1 0 2.61 0V26.1a2.61 2.61 0 0 1 5.22 0v6.52a1.31 1.31 0 0 0 2.61 0V28.7a2.61 2.61 0 1 1 5.22 0v3.91a1.305 1.305 0 0 0 2.61 0v-1.3a2.61 2.61 0 1 1 5.22 0v14.35z"/></svg>',
+  swipeR: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48.48 60"><path d="M28.92 7.82h12.5l-3 3a1.31 1.31 0 0 0 1.85 1.84l5.23-5.22a1.23 1.23 0 0 0 .13-.2 1.25 1.25 0 0 0-.11-1.62L40.28.38a1.301 1.301 0 1 0-1.84 1.84l3 3H28.92a1.3 1.3 0 0 0 0 2.6zM43.27 26.09a5.2 5.2 0 0 0-2.9.88 5.22 5.22 0 0 0-7.83-2.61A5.22 5.22 0 0 0 25 21.57V13a5.22 5.22 0 1 0-10.44 0v22.22l-4.53-3.4a6.84 6.84 0 0 0-8.89.63 3.92 3.92 0 0 0 0 5.53L19.7 56.56A11.67 11.67 0 0 0 28.02 60h6.11a14.37 14.37 0 0 0 14.35-14.35V31.3a5.22 5.22 0 0 0-5.21-5.21zm2.61 19.57a11.75 11.75 0 0 1-11.74 11.73h-6.12a9.07 9.07 0 0 1-6.46-2.67L2.99 36.14a1.31 1.31 0 0 1 0-1.84 4.22 4.22 0 0 1 5.49-.39l6.62 5a1.3 1.3 0 0 0 2.09-1V13a2.61 2.61 0 1 1 5.22 0v19.61a1.31 1.31 0 0 0 2.61 0v-6.52a2.61 2.61 0 0 1 5.22 0v6.52a1.31 1.31 0 0 0 2.61 0v-3.92a2.61 2.61 0 0 1 5.22 0v3.91a1.31 1.31 0 0 0 2.61 0v-1.3a2.61 2.61 0 1 1 5.22 0v14.35z"/></svg>'
 };
 
 /***/ }),
@@ -2605,6 +2636,7 @@ function makeSwipeable(el, callback) {
       direction = x - eMove.clientX > 0 ? 'left' : 'right';
       currentX = eMove.clientX;
 
+      el.dataset.dir = direction;
       el.style.transform = 'translate3d(' + -shift + 'px, 0, 0)';
     }
 
@@ -2620,7 +2652,7 @@ function makeSwipeable(el, callback) {
               var p = 1 - progress;
               el.style.transform = 'translate3d(' + -shift * p + 'px, 0, 0)';
 
-              if (progress === 1 && Math.abs(currentX - firstX) > el.offsetWidth / 2) {
+              if (progress === 1 && Math.abs(currentX - firstX) > el.offsetWidth * 0.4) {
                 callback(dir);
               }
             }
@@ -2629,6 +2661,7 @@ function makeSwipeable(el, callback) {
       }
 
       direction = null;
+      el.dataset.dir = '';
 
       document.removeEventListener('mousemove', move);
       document.removeEventListener('touchmove', move);

@@ -639,7 +639,26 @@ a.uralsib-enter__title:hover {
   -webkit-transform: translate3d(-50%, 20px, 0);
           transform: translate3d(-50%, 20px, 0);
 }
+.uralsib-q__option-hint {
+  position: absolute;
+  top: calc(100% + 30px);
+  color: #fff;
+  opacity: 0.5;
+}
+.uralsib-q__option-hint svg {
+  width: 34px;
+  height: 36px;
+  margin: 0 auto;
+}
+.uralsib-q__option-hint div {
+  max-width: 80px;
+  margin-top: 5px;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+}
 .uralsib-card {
+  position: relative;
   min-height: 400px;
   overflow: hidden;
   border-radius: 10px;
@@ -656,6 +675,67 @@ a.uralsib-enter__title:hover {
   .uralsib-card {
     min-height: 480px;
   }
+}
+.uralsib-card__hint {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-50%, 0, 0);
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+[data-dir="left"] .uralsib-card__hint--left {
+  visibility: visible;
+  opacity: 1;
+}
+[data-dir="right"] .uralsib-card__hint--right {
+  visibility: visible;
+  opacity: 1;
+}
+@media (min-width: 568px) {
+  .uralsib-card__hint {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  .uralsib-card__hint--left {
+    left: 25px;
+  }
+  .uralsib-card__hint--right {
+    left: auto;
+    right: 25px;
+  }
+}
+.uralsib-card__hint-icon {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  color: #002d72;
+  border: 3px solid currentColor;
+  border-radius: 100%;
+}
+.uralsib-card__hint-icon svg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+@media (min-width: 680px) {
+  .uralsib-card__hint-icon {
+    width: 75px;
+    height: 75px;
+  }
+}
+.uralsib-card__hint-caption {
+  margin-top: 5px;
+  color: #002d72;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
 }
 .uralsib-card__head {
   position: relative;
@@ -1083,8 +1163,13 @@ a.uralsib-enter__title:hover {
   font-weight: 700;
   line-height: 21px;
 }
+.uralsib-help__text p {
+  padding: 0;
+  margin: 0 !important;
+  line-height: inherit !important;
+}
 .uralsib-help__text p:not(:last-child) {
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
 }
 .uralsib-help__btn {
   margin-top: 34px;
