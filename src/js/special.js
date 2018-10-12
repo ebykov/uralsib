@@ -8,7 +8,6 @@ import * as Share from './lib/share';
 import { animate } from './lib/animate';
 import makeSwipeable from './lib/swipe';
 // import * as Analytics from './lib/analytics';
-// import { shuffle } from './lib/array';
 
 const CSS = {
   main: 'uralsib',
@@ -90,6 +89,12 @@ class Special extends BaseSpecial {
     EL.qCards = makeElement('div', `${CSS.main}-q__cards`);
     EL.qCard = makeElement('div', `${CSS.main}-q__card`);
     EL.card = makeElement('div', `${CSS.main}-card`);
+    EL.cHintL = makeElement('div', [`${CSS.main}-card__hint`, `${CSS.main}-card__hint--left`], {
+      innerHTML: `<div class="${CSS.main}-card__hint-icon">${Svg.movie}</div><div class="${CSS.main}-card__hint-caption">Фильм</div>`,
+    });
+    EL.cHintR = makeElement('div', [`${CSS.main}-card__hint`, `${CSS.main}-card__hint--right`], {
+      innerHTML: `<div class="${CSS.main}-card__hint-icon">${Svg.case}</div><div class="${CSS.main}-card__hint-caption">Бизнес</div>`,
+    });
     EL.cHead = makeElement('div', `${CSS.main}-card__head`);
     EL.cBottom = makeElement('div', `${CSS.main}-card__bottom`);
     EL.cImg = makeElement('img', `${CSS.main}-card__img`);
@@ -122,6 +127,8 @@ class Special extends BaseSpecial {
 
     EL.card.appendChild(EL.cHead);
     EL.card.appendChild(EL.cBottom);
+    EL.card.appendChild(EL.cHintL);
+    EL.card.appendChild(EL.cHintR);
 
     EL.qCard.appendChild(EL.card);
 

@@ -358,6 +358,7 @@ colors = {
         transform: translate3d(-50%, 20px, 0)
 
   &-card
+    position: relative
     min-height: 400px
     overflow: hidden
     border-radius: 10px
@@ -368,6 +369,64 @@ colors = {
 
     @media $mq.not_mobile
       min-height: 480px
+
+    &__hint
+      position: absolute
+      top: 20px
+      left: 50%
+      visibility: hidden
+      opacity: 0
+      transform translate3d(-50%, 0, 0)
+      transition opacity .2s
+
+      &--left
+
+        [data-dir="left"] &
+          visibility: visible
+          opacity: 1
+
+      &--right
+
+        [data-dir="right"] &
+          visibility: visible
+          opacity: 1
+
+      @media $mq.not_mobile
+        transform translate3d(0, 0, 0)
+
+        &--left
+          left: 25px
+
+        &--right
+          left: auto
+          right: 25px
+
+    &__hint-icon
+      position: relative
+      width: 60px
+      height: 60px
+      color: colors.main
+      border: 3px solid currentColor
+      border-radius: 100%
+
+      & svg
+        position: absolute
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+        margin: auto
+
+      @media $mq.not_mobile
+        width: 75px
+        height: 75px
+
+    &__hint-caption
+      margin-top: 5px
+      color: colors.main
+      font-weight: 700
+      line-height: 1
+      text-align: center
 
     &__head
       position: relative

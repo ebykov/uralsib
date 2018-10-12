@@ -23,6 +23,7 @@ export default function makeSwipeable(el, callback) {
       direction = (x - eMove.clientX) > 0 ? 'left' : 'right';
       currentX = eMove.clientX;
 
+      el.dataset.dir = direction;
       el.style.transform = `translate3d(${-shift}px, 0, 0)`;
     }
 
@@ -45,6 +46,7 @@ export default function makeSwipeable(el, callback) {
       }
 
       direction = null;
+      el.dataset.dir = '';
 
       document.removeEventListener('mousemove', move);
       document.removeEventListener('touchmove', move);
