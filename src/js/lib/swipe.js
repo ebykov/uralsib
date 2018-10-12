@@ -23,6 +23,8 @@ export default function makeSwipeable(el, callback) {
       direction = (x - eMove.clientX) > 0 ? 'left' : 'right';
       currentX = eMove.clientX;
 
+      const opacity = Math.ceil((100 / (el.offsetWidth / Math.abs(shift))).toFixed() / 10) * 10;
+      el.dataset.opacity = opacity > 100 ? 100 : opacity;
       el.dataset.dir = direction;
       el.style.transform = `translate3d(${-shift}px, 0, 0)`;
     }

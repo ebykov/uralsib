@@ -401,13 +401,71 @@ colors = {
 
         [data-dir="left"] &
           visibility: visible
-          opacity: 1
+
+          [data-opacity="10"]&
+            opacity: .1
+
+          [data-opacity="20"]&
+            opacity: .2
+
+          [data-opacity="30"]&
+            opacity: .3
+
+          [data-opacity="40"]&
+            opacity: .4
+
+          [data-opacity="50"]&
+            opacity: .5
+
+          [data-opacity="60"]&
+            opacity: .6
+
+          [data-opacity="70"]&
+            opacity: .7
+
+          [data-opacity="80"]&
+            opacity: .8
+
+          [data-opacity="90"]&
+            opacity: .9
+
+          [data-opacity="100"]&
+            opacity: 1
 
       &--right
 
         [data-dir="right"] &
           visibility: visible
-          opacity: 1
+
+          [data-opacity="10"]&
+            opacity: .1
+
+          [data-opacity="20"]&
+            opacity: .2
+
+          [data-opacity="30"]&
+            opacity: .3
+
+          [data-opacity="40"]&
+            opacity: .4
+
+          [data-opacity="50"]&
+            opacity: .5
+
+          [data-opacity="60"]&
+            opacity: .6
+
+          [data-opacity="70"]&
+            opacity: .7
+
+          [data-opacity="80"]&
+            opacity: .8
+
+          [data-opacity="90"]&
+            opacity: .9
+
+          [data-opacity="100"]&
+            opacity: 1
 
       @media $mq.iphone5_landspace
         transform translate3d(0, 0, 0)
@@ -504,6 +562,7 @@ colors = {
           margin-bottom: 20px
 
       &__info-img
+        flex-shrink: 0
         display: block
         width: 80px
         height: 80px
