@@ -82,9 +82,15 @@ class Special extends BaseSpecial {
     EL.qPages = makeElement('div', `${CSS.main}-q__pages`);
     EL.qOptionL = makeElement('div', [`${CSS.main}-q__option`, `${CSS.main}-q__option--left`], {
       innerHTML: `<div class="${CSS.main}-q__option-icon">${Svg.movie}</div><div class="${CSS.main}-q__option-caption">Фильм</div>`,
+      data: {
+        type: 'left',
+      },
     });
     EL.qOptionR = makeElement('div', [`${CSS.main}-q__option`, `${CSS.main}-q__option--right`], {
       innerHTML: `<div class="${CSS.main}-q__option-icon">${Svg.case}</div><div class="${CSS.main}-q__option-caption">Бизнес</div>`,
+      data: {
+        type: 'right',
+      },
     });
     EL.qCards = makeElement('div', `${CSS.main}-q__cards`);
     EL.qCard = makeElement('div', `${CSS.main}-q__card`);
@@ -256,6 +262,21 @@ class Special extends BaseSpecial {
     return result;
   }
 
+  onOptionHover(e) {
+    if (this.isAnswered || this.activeIndex > 0) return;
+
+    const el = e.currentTarget;
+    const t = el.dataset.type;
+    const hint = makeElement('div', `${CSS.main}-q__option-hint`, {
+      innerHTML: t === 'left' ? `${Svg.swipeL}<div>Или свайпни карточку влево</div>` : `${Svg.swipeR}<div>Или свайпни карточку вправо</div>`,
+    });
+
+    el.appendChild(hint);
+    el.addEventListener('mouseleave', () => {
+      el.removeChild(hint);
+    }, { once: true });
+  }
+
   start() {
     this.container.removeChild(EL.enter);
     this.container.appendChild(EL.q);
@@ -266,27 +287,8 @@ class Special extends BaseSpecial {
       this.container.appendChild(EL.help);
       animate(EL.help, 'fadeIn', '200ms', '400ms');
     } else {
-      EL.qOptionL.addEventListener('mouseenter', () => {
-        const qHint = makeElement('div', `${CSS.main}-q__option-hint`, {
-          innerHTML: `${Svg.swipeL}<div>Или свайпни карточку влево</div>`,
-        });
-        EL.qOptionL.appendChild(qHint);
-
-        EL.qOptionL.addEventListener('mouseleave', () => {
-          EL.qOptionL.removeChild(qHint);
-        }, { once: true });
-      }, { once: true });
-
-      EL.qOptionR.addEventListener('mouseenter', () => {
-        const qHint = makeElement('div', `${CSS.main}-q__option-hint`, {
-          innerHTML: `${Svg.swipeR}<div>Или свайпни карточку вправо</div>`,
-        });
-        EL.qOptionR.appendChild(qHint);
-
-        EL.qOptionR.addEventListener('mouseleave', () => {
-          EL.qOptionR.removeChild(qHint);
-        }, { once: true });
-      }, { once: true });
+      EL.qOptionL.addEventListener('mouseenter', this.onOptionHover.bind(this));
+      EL.qOptionR.addEventListener('mouseenter', this.onOptionHover.bind(this));
     }
   }
 
