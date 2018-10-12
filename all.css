@@ -675,7 +675,12 @@ a.uralsib-enter__title:hover {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  cursor: pointer;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+.uralsib-q.is-correct .uralsib-card,
+.uralsib-q.is-incorrect .uralsib-card {
+  cursor: default;
 }
 @media (min-width: 680px) {
   .uralsib-card {
@@ -1077,11 +1082,13 @@ a.uralsib-enter__title:hover {
 }
 .uralsib-offer__text {
   margin-top: 6px;
+  margin-bottom: 30px;
   color: #fff;
   line-height: 1.4em;
 }
 @media (min-width: 680px) {
   .uralsib-offer__text {
+    margin-bottom: 50px;
     line-height: 1.778em;
   }
 }
@@ -1101,7 +1108,7 @@ a.uralsib-enter__title:hover {
 }
 .uralsib-offer__block {
   width: calc(100% + 10px);
-  margin: 15px 0 30px -5px;
+  margin: 0 0 15px -5px;
   padding: 10px;
   border-radius: 5px;
   background-color: #ffd100;
@@ -1109,7 +1116,7 @@ a.uralsib-enter__title:hover {
 @media (min-width: 680px) {
   .uralsib-offer__block {
     width: calc(100% + 30px);
-    margin: 20px 0 50px -20px;
+    margin: 0px 0 20px -20px;
     padding: 15px 20px 20px;
   }
 }

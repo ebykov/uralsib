@@ -993,10 +993,16 @@ var Special = function (_BaseSpecial) {
       EL.q = (0, _dom.makeElement)('div', CSS.main + '-q');
       EL.qPages = (0, _dom.makeElement)('div', CSS.main + '-q__pages');
       EL.qOptionL = (0, _dom.makeElement)('div', [CSS.main + '-q__option', CSS.main + '-q__option--left'], {
-        innerHTML: '<div class="' + CSS.main + '-q__option-icon">' + _svg2.default.movie + '</div><div class="' + CSS.main + '-q__option-caption">\u0424\u0438\u043B\u044C\u043C</div>'
+        innerHTML: '<div class="' + CSS.main + '-q__option-icon">' + _svg2.default.movie + '</div><div class="' + CSS.main + '-q__option-caption">\u0424\u0438\u043B\u044C\u043C</div>',
+        data: {
+          type: 'left'
+        }
       });
       EL.qOptionR = (0, _dom.makeElement)('div', [CSS.main + '-q__option', CSS.main + '-q__option--right'], {
-        innerHTML: '<div class="' + CSS.main + '-q__option-icon">' + _svg2.default.case + '</div><div class="' + CSS.main + '-q__option-caption">\u0411\u0438\u0437\u043D\u0435\u0441</div>'
+        innerHTML: '<div class="' + CSS.main + '-q__option-icon">' + _svg2.default.case + '</div><div class="' + CSS.main + '-q__option-caption">\u0411\u0438\u0437\u043D\u0435\u0441</div>',
+        data: {
+          type: 'right'
+        }
       });
       EL.qCards = (0, _dom.makeElement)('div', CSS.main + '-q__cards');
       EL.qCard = (0, _dom.makeElement)('div', CSS.main + '-q__card');
@@ -1112,9 +1118,9 @@ var Special = function (_BaseSpecial) {
       EL.oBlock.appendChild(EL.oBlockText);
       EL.oBlock.appendChild(EL.oBlockBtn);
 
+      EL.offer.appendChild(EL.oBlock);
       EL.offer.appendChild(EL.oIcon);
       EL.offer.appendChild(EL.oText);
-      EL.offer.appendChild(EL.oBlock);
       EL.offer.appendChild(EL.oBackBtn);
       EL.offer.appendChild(EL.oImg);
 
@@ -1163,6 +1169,22 @@ var Special = function (_BaseSpecial) {
       }
     }
   }, {
+    key: 'onOptionHover',
+    value: function onOptionHover(e) {
+      if (this.isAnswered || this.activeIndex > 0) return;
+
+      var el = e.currentTarget;
+      var t = el.dataset.type;
+      var hint = (0, _dom.makeElement)('div', CSS.main + '-q__option-hint', {
+        innerHTML: t === 'left' ? _svg2.default.swipeL + '<div>\u0418\u043B\u0438 \u0441\u0432\u0430\u0439\u043F\u043D\u0438 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0443 \u0432\u043B\u0435\u0432\u043E</div>' : _svg2.default.swipeR + '<div>\u0418\u043B\u0438 \u0441\u0432\u0430\u0439\u043F\u043D\u0438 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0443 \u0432\u043F\u0440\u0430\u0432\u043E</div>'
+      });
+
+      el.appendChild(hint);
+      el.addEventListener('mouseleave', function () {
+        el.removeChild(hint);
+      }, { once: true });
+    }
+  }, {
     key: 'start',
     value: function start() {
       this.container.removeChild(EL.enter);
@@ -1174,27 +1196,8 @@ var Special = function (_BaseSpecial) {
         this.container.appendChild(EL.help);
         (0, _animate.animate)(EL.help, 'fadeIn', '200ms', '400ms');
       } else {
-        EL.qOptionL.addEventListener('mouseenter', function () {
-          var qHint = (0, _dom.makeElement)('div', CSS.main + '-q__option-hint', {
-            innerHTML: _svg2.default.swipeL + '<div>\u0418\u043B\u0438 \u0441\u0432\u0430\u0439\u043F\u043D\u0438 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0443 \u0432\u043B\u0435\u0432\u043E</div>'
-          });
-          EL.qOptionL.appendChild(qHint);
-
-          EL.qOptionL.addEventListener('mouseleave', function () {
-            EL.qOptionL.removeChild(qHint);
-          }, { once: true });
-        }, { once: true });
-
-        EL.qOptionR.addEventListener('mouseenter', function () {
-          var qHint = (0, _dom.makeElement)('div', CSS.main + '-q__option-hint', {
-            innerHTML: _svg2.default.swipeR + '<div>\u0418\u043B\u0438 \u0441\u0432\u0430\u0439\u043F\u043D\u0438 \u043A\u0430\u0440\u0442\u043E\u0447\u043A\u0443 \u0432\u043F\u0440\u0430\u0432\u043E</div>'
-          });
-          EL.qOptionR.appendChild(qHint);
-
-          EL.qOptionR.addEventListener('mouseleave', function () {
-            EL.qOptionR.removeChild(qHint);
-          }, { once: true });
-        }, { once: true });
+        EL.qOptionL.addEventListener('mouseenter', this.onOptionHover.bind(this));
+        EL.qOptionR.addEventListener('mouseenter', this.onOptionHover.bind(this));
       }
     }
 
