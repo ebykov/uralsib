@@ -1185,6 +1185,7 @@ a.uralsib-enter__title:hover {
 }
 .uralsib-offer__img {
   position: absolute;
+  z-index: -1;
   bottom: -35px;
   right: -65px;
 }
