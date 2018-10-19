@@ -293,12 +293,16 @@
   top: 5px;
   right: 12px;
   display: block;
-  width: 148px;
-  height: 30px;
+  width: 187px;
+  height: 38px;
   color: #fff !important;
   border: 0 !important;
-  -webkit-transition: opacity 0.2s;
-  transition: opacity 0.2s;
+  -webkit-transition: opacity 0.2s, width 0.2s, height 0.2s;
+  transition: opacity 0.2s, width 0.2s, height 0.2s;
+}
+.uralsib.is-testing .uralsib__logo {
+  width: 148px;
+  height: 30px;
 }
 .uralsib__logo:hover {
   opacity: 0.6;
@@ -312,6 +316,10 @@
   .uralsib__logo {
     top: 8px;
     right: 22px;
+    width: 296px;
+    height: 60px;
+  }
+  .uralsib.is-testing .uralsib__logo {
     width: 197px;
     height: 40px;
   }

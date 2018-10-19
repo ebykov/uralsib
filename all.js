@@ -1187,6 +1187,7 @@ var Special = function (_BaseSpecial) {
   }, {
     key: 'start',
     value: function start() {
+      this.container.classList.add('is-testing');
       this.container.removeChild(EL.enter);
       this.container.appendChild(EL.q);
 
@@ -1297,6 +1298,7 @@ var Special = function (_BaseSpecial) {
     value: function result() {
       var result = Special.getResult(this.correctAnswers);
 
+      this.container.classList.remove('is-testing');
       this.container.removeChild(EL.q);
       this.container.appendChild(EL.result);
 
