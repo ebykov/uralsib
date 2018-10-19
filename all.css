@@ -707,8 +707,8 @@ a.uralsib-enter__title:hover {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  -webkit-filter: blur(2px);
-          filter: blur(2px);
+  -webkit-filter: blur(6px);
+          filter: blur(6px);
 }
 @media (min-width: 680px) {
   .uralsib-bcard {
