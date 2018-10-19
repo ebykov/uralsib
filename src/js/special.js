@@ -228,6 +228,17 @@ class Special extends BaseSpecial {
     EL.hInner.appendChild(EL.hBtn);
 
     EL.help.appendChild(EL.hInner);
+
+    EL.backCard = makeElement('div', `${CSS.main}-bcard`);
+    EL.bcHead = makeElement('div', `${CSS.main}-bcard__head`);
+    EL.bcBottom = makeElement('div', `${CSS.main}-bcard__bottom`);
+    EL.bcImg = makeElement('img', `${CSS.main}-bcard__img`);
+    EL.bcText = makeElement('div', `${CSS.main}-bcard__text`);
+
+    EL.bcHead.appendChild(EL.bcImg);
+    EL.bcBottom.appendChild(EL.bcText);
+    EL.backCard.appendChild(EL.bcHead);
+    EL.backCard.appendChild(EL.bcBottom);
   }
 
   hideHelp() {
@@ -236,16 +247,35 @@ class Special extends BaseSpecial {
     });
   }
 
+  static makeBackCard(index) {
+    const q = Data.questions[index];
+
+    EL.bcImg.src = q.img;
+    EL.bcImg.srcset = `${q.img2x} 2x`;
+    EL.bcText.innerHTML = q.text;
+
+    return EL.backCard;
+  }
+
   showCount() {
     const index = this.activeIndex + 1;
+    removeChildren(EL.qCards);
+
     if (index === Data.questions.length) {
-      EL.qCards.innerHTML = '';
-    } else if (index > Data.questions.length / 2) {
+      return;
+    }
+
+    const backCard = Special.makeBackCard(index);
+
+    if (index > Data.questions.length / 2) {
       EL.qCards.innerHTML = '<div></div>';
+      EL.qCards.firstChild.appendChild(backCard);
     } else if (index > Data.questions.length / 4) {
       EL.qCards.innerHTML = '<div></div><div></div>';
+      EL.qCards.firstChild.appendChild(backCard);
     } else {
       EL.qCards.innerHTML = '<div></div><div></div><div></div>';
+      EL.qCards.firstChild.appendChild(backCard);
     }
   }
 
@@ -333,7 +363,7 @@ class Special extends BaseSpecial {
     this.showCount();
 
     EL.qCard.appendChild(EL.card);
-    animate(EL.card, 'zoomIn', '200ms');
+    animate(EL.card, 'cardZoomIn', '200ms');
   }
 
   answer(t) {

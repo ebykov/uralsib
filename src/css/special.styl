@@ -206,9 +206,8 @@ colors = {
       left: 0
       right: 0
 
-      & div
+      & > div
         position: absolute
-        bottom: -5px
         left: 0
         right: 0
         margin: 0 auto
@@ -217,22 +216,25 @@ colors = {
         border-radius: 10px
         background-color: #ffffff
         box-shadow: 0px 3px 5px rgba(0, 0, 0, .25)
+        transform-origin : 50% 100%
+        overflow: hidden
 
         @media $mq.not_mobile
           height: 480px
 
         &:nth-child(1)
           z-index: 3
-          width: 96%
+          bottom: -5px
+          transform: scale(.96)
 
         &:nth-child(2)
           z-index: 2
           bottom: -10px
-          width: 92%
+          transform: scale(.92)
 
         &:nth-child(3)
           bottom: -15px
-          width: 88%
+          transform: scale(.88)
 
     &__option
       position: absolute
@@ -386,6 +388,49 @@ colors = {
         font-size: 14px
         line-height: 16px
         text-align: center
+
+  &-bcard
+    position: relative
+    min-height: 400px
+    overflow: hidden
+    border-radius: 10px
+    background-color: #fff
+    user-select: none
+    filter: blur(2px)
+
+    @media $mq.not_mobile
+      min-height: 480px
+
+    &__head
+      position: relative
+      max-height: 280px
+      overflow: hidden
+      border-radius: 10px 10px 0 0
+      background-color: #FFD101
+      transform translate3d(0, 0, 0)
+
+      &::before
+        content: ''
+        display: block
+        padding-top: 70%
+
+    &__img
+      position: absolute
+      top: 50%
+      transform: translate3d(0, -50%, 0)
+      display: block
+      width: 100%
+      pointer-events: none
+
+    &__text
+      padding: 20px 10px 10px
+      color: #666666
+      font-size: 16px
+      line-height: 1.4em
+
+      @media $mq.not_mobile
+        padding: 28px 20px 10px 30px
+        line-height: 1.625em
 
   &-card
     position: relative
