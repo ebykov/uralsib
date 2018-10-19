@@ -36,6 +36,10 @@
   -webkit-animation-name: zoomIn;
           animation-name: zoomIn;
 }
+.cardZoomIn {
+  -webkit-animation-name: cardZoomIn;
+          animation-name: cardZoomIn;
+}
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0;
@@ -194,6 +198,22 @@
   }
   50% {
     opacity: 1;
+  }
+}
+@-webkit-keyframes cardZoomIn {
+  from {
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+    -webkit-transform: scale3d(0.96, 0.96, 0.96) translateY(5px);
+            transform: scale3d(0.96, 0.96, 0.96) translateY(5px);
+  }
+}
+@keyframes cardZoomIn {
+  from {
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+    -webkit-transform: scale3d(0.96, 0.96, 0.96) translateY(5px);
+            transform: scale3d(0.96, 0.96, 0.96) translateY(5px);
   }
 }
 .wrapper {
@@ -435,9 +455,8 @@ a.uralsib-enter__title:hover {
   left: 0;
   right: 0;
 }
-.uralsib-q__cards div {
+.uralsib-q__cards > div {
   position: absolute;
-  bottom: -5px;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -447,24 +466,31 @@ a.uralsib-enter__title:hover {
   background-color: #fff;
   -webkit-box-shadow: 0px 3px 5px rgba(0,0,0,0.25);
           box-shadow: 0px 3px 5px rgba(0,0,0,0.25);
+  -webkit-transform-origin: 50% 100%;
+          transform-origin: 50% 100%;
+  overflow: hidden;
 }
 @media (min-width: 680px) {
-  .uralsib-q__cards div {
+  .uralsib-q__cards > div {
     height: 480px;
   }
 }
-.uralsib-q__cards div:nth-child(1) {
+.uralsib-q__cards > div:nth-child(1) {
   z-index: 3;
-  width: 96%;
+  bottom: -5px;
+  -webkit-transform: scale(0.96);
+          transform: scale(0.96);
 }
-.uralsib-q__cards div:nth-child(2) {
+.uralsib-q__cards > div:nth-child(2) {
   z-index: 2;
   bottom: -10px;
-  width: 92%;
+  -webkit-transform: scale(0.92);
+          transform: scale(0.92);
 }
-.uralsib-q__cards div:nth-child(3) {
+.uralsib-q__cards > div:nth-child(3) {
   bottom: -15px;
-  width: 88%;
+  -webkit-transform: scale(0.88);
+          transform: scale(0.88);
 }
 .uralsib-q__option {
   position: absolute;
@@ -670,6 +696,59 @@ a.uralsib-enter__title:hover {
   font-size: 14px;
   line-height: 16px;
   text-align: center;
+}
+.uralsib-bcard {
+  position: relative;
+  min-height: 400px;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #fff;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-filter: blur(2px);
+          filter: blur(2px);
+}
+@media (min-width: 680px) {
+  .uralsib-bcard {
+    min-height: 480px;
+  }
+}
+.uralsib-bcard__head {
+  position: relative;
+  max-height: 280px;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+  background-color: #ffd101;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+.uralsib-bcard__head::before {
+  content: '';
+  display: block;
+  padding-top: 70%;
+}
+.uralsib-bcard__img {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate3d(0, -50%, 0);
+          transform: translate3d(0, -50%, 0);
+  display: block;
+  width: 100%;
+  pointer-events: none;
+}
+.uralsib-bcard__text {
+  padding: 20px 10px 10px;
+  color: #666;
+  font-size: 16px;
+  line-height: 1.4em;
+}
+@media (min-width: 680px) {
+  .uralsib-bcard__text {
+    padding: 28px 20px 10px 30px;
+    line-height: 1.625em;
+  }
 }
 .uralsib-card {
   position: relative;
