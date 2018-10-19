@@ -278,6 +278,7 @@ class Special extends BaseSpecial {
   }
 
   start() {
+    this.container.classList.add('is-testing');
     this.container.removeChild(EL.enter);
     this.container.appendChild(EL.q);
 
@@ -379,6 +380,7 @@ class Special extends BaseSpecial {
   result() {
     const result = Special.getResult(this.correctAnswers);
 
+    this.container.classList.remove('is-testing');
     this.container.removeChild(EL.q);
     this.container.appendChild(EL.result);
 
